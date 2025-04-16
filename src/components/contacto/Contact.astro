@@ -1,0 +1,86 @@
+---
+// Contacto.astro - Componente
+---
+<section class="contacto">
+    <h2>Contacto</h2>
+    <p>
+      A continuación te ofrecemos dos medios de contacto directo. Si preferís que nosotros te contactemos, completá el formulario accediendo al botón inferior.
+    </p>
+  
+    <div class="botones">
+      <a href="https://wa.me/549XXXXXXXXXX" target="_blank" class="btn whatsapp">
+        Contactar por WhatsApp
+      </a>
+      <a href="mailto:contacto@tudominio.com" class="btn mail">
+        Contactar por Correo
+      </a>
+      <a href="/contact" class="btn form">
+        Quiero que me contacten
+      </a>
+    </div>
+  </section>
+  
+  <style>
+    .contacto {
+        height: 100vh;
+        padding: 0 5%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+  
+    .contacto h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--contrast);
+      font-weight: 400;
+      width: 100%;
+    }
+  
+    .contacto p {
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+  
+    .botones {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1rem;
+      width: 100%;
+    }
+  
+    .whatsapp {
+        text-align: center;
+      background: #25d366;
+      border: none;
+      color: var(--background);
+    }
+  
+    .whatsapp:hover {
+      background: #1ebe5d;
+      
+    }
+  
+    .mail {
+        border: none;
+      background: #0072c6;
+      color: var(--background);
+      text-align: center;
+
+    }
+  
+    .mail:hover {
+      background: #005b9f;
+      
+    }
+    .form{
+        color: var(--contrast); 
+        text-align: center;
+    }
+    .form:hover{
+        color: var(--background);
+    }
+  </style>
+  
