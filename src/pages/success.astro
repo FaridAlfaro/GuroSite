@@ -12,13 +12,15 @@ import Layout from "../layouts/Layout.astro";
 <style>
     section {
         height: 100vh;
+        padding: 0 5%;
         display: flex;
         justify-content: center;
         align-items: center;
         background: transparent;
         flex-direction: column;
+        background: var(--contrast);
         h1 {
-            color: var(--contrast);
+            color: var(--background);
             font-size: 4em;
             font-weight: normal;
         }
@@ -27,16 +29,18 @@ import Layout from "../layouts/Layout.astro";
             font-weight: bold;
         }
         p {
-            color: var(--contrast);
+            color: var(--background);
             font-weight: bold;
             font-size: 1em;
         }
     }
     @media (max-width: 700px) {
         section {
+            background: var(--contrast);
             height: 100vh;
+            padding: 0 5%;
             h1 {
-                color: var(--contrast);
+                color: var(--background);
                 font-size: 40px;
                 font-weight: normal;
             }
@@ -45,7 +49,7 @@ import Layout from "../layouts/Layout.astro";
                 font-weight: bold;
             }
             p {
-                color: var(--contrast);
+                color: var(--background);
                 font-weight: bold;
                 font-size: 14px;
             }
