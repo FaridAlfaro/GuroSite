@@ -1,0 +1,177 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Form from "../components/contacto/Form.astro";
+---
+
+<Layout title="Contacto">
+  <section class="contacto">
+    <div class="titular">
+      <h1>
+        <span class="s1">¿Listo</span>
+        <br />para<span class="s2"> trabajar</span><br /><span class="s3"
+          >juntos?</span>
+      </h1>
+      <div class="correo">
+        <a
+          href="mailto:adjustabledevelopment@gmail.com?Subject=Interesado%20en%20el%20servicio"
+          >adjustabledevelopment@gmail.com</a>
+      </div>
+      <div class="correo">
+        <a
+          href="https://wa.me/3512401402/?text=Hola!%20Quiero%20trabajar%20con%20ustedes"
+        >
+          +54 9 351 240-1402
+        </a>
+      </div>
+    </div>
+    <div class="formulario">
+      <div class="accion">
+        <span></span>
+        <div class="textos">
+          <h2>Estamos listos para hacer tu proyecto realidad.<br />¿Y vos?</h2>
+          <p class="a">
+            ¡No dudes en contactarnos para discutir tus ideas! Estamos
+            emocionados de colaborar contigo y llevar tu proyecto al siguiente
+            nivel.
+          </p>
+        </div>
+        <img src="/gif/computadora.gif" alt="" />
+      </div>
+      <Form />
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .titular {
+    font-size: clamp(20px, 5vh, 40px);
+    margin-top: 50rpx;
+    h1 {
+      color: var(--constrast);
+      font-weight: 300;
+      font-size: 2rem;
+    }
+  }
+  .s1,
+  .s3 {
+    font-weight: 300;
+    color: var(--constrast);
+  }
+  .s2 {
+    color: transparent;
+    background-image: url(/gif/fondoazul.gif);
+    background-clip: text;
+    font-weight: bold;
+    font-style: italic;
+    cursor: cell;
+    transition: ease 1s;
+  }
+
+  .correo {
+    margin: 10px 0;
+    cursor: pointer;
+    transition: ease 1s;
+    a {
+      text-decoration: none;
+      color: var(--white);
+      font-size: 0.5em;
+    }
+    a:hover {
+      transition: ease 1s;
+    }
+  }
+  .correo:hover {
+    transition: ease 0.5s;
+    background-clip: text;
+    color: red;
+  }
+
+  .contacto {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+    width: 100vw;
+    padding: 0 5%;
+    height: 100vh;
+    align-items: center;
+    background-color: var(--background);
+    color: var(--constrast);
+    opacity: 1;
+    overflow: hidden;
+  }
+  .formulario {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 80%;
+    margin: 0;
+    padding: 10% 0;
+  }
+  p {
+    font-size: clamp(12px, 0.5vh, 14px);
+    margin: 0;
+    padding: 0;
+  }
+  .textos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: auto;
+    h2 {
+      font-size: clamp(14px, 3vh, 18px);
+      font-weight: normal;
+      margin: 0 0 3% 0;
+      padding: 0;
+    }
+  }
+  .accion {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: clamp(18%, 10vh, 20%);
+    margin: 10% 0;
+    overflow: hidden;
+    span {
+      padding: 0;
+      min-width: 2px;
+      height: 100%;
+      background: var(--white);
+      margin: 0 5% 0 0;
+    }
+    img {
+      width: 20%;
+    }
+  }
+  @media (max-width: 700px) {
+    .contacto {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: auto;
+      height: auto;
+      margin-top: 50px;
+    }
+    .titular {
+      margin-top: 20%;
+      width: 100%;
+      font-size: clamp(12px, 7vw, 28px);
+    }
+    .formulario {
+      width: 100%;
+      height: 50%;
+      margin: 10% 5%;
+      padding: 0;
+    }
+    .accion {
+      display: none;
+    }
+  }
+</style>

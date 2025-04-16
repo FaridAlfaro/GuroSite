@@ -1,0 +1,148 @@
+---
+
+---
+
+<section class="call-to-action">
+  <span class="etiqueta">- Nosotros</span>
+
+  <h1 class="titulo-principal">
+    A Borderless<br />
+    <span class="light">Creative Company</span><br />
+    <strong>Where Technology<br />and Emotion Meet.</strong>
+  </h1>
+
+  <div class="video-container" id="rootNode">
+    <video
+      src="/video/trabajos.mp4"
+      class="video"
+      autoplay
+      loop
+      muted
+      playsinline
+    >
+    </video>
+  </div>
+
+  <p class="descripcion">
+    Nosotros ayudamos a pequeñas y medianas empresas a destacar a través de
+    marcas atractivas, sitios web de alto rendimiento y automatización de
+    campañas.
+  </p>
+
+  <a href="/contacto" class="btn modifier">About →</a>
+</section>
+<script type="module" src="/animacion/animate.js"></script>
+<script type="module" src="/animacion/grafo.js"></script>
+<script type="module">
+  import anime from "https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.es.js";
+
+  const section = document.querySelector(".call-to-action");
+  const videoContainer = document.querySelector("#rootNode");
+  const video = videoContainer.querySelector("video");
+
+  let animationTriggered = false;
+
+  video.style.opacity = 0;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !animationTriggered) {
+          setTimeout(() => {
+            anime({
+              targets: video,
+              opacity: 1,
+              easing: "easeOutCubic",
+              duration: 1000,
+            });
+            animationTriggered = true;
+          }, 1000);
+        }
+      });
+    },
+    { threshold: 0.4 },
+  );
+
+  observer.observe(section);
+
+  window.addEventListener("scroll", () => {
+    if (!animationTriggered) return;
+
+    const scrollY = window.scrollY;
+    const offsetTop = section.offsetTop;
+    const scrollOffset = scrollY - offsetTop;
+
+    if (scrollOffset > 0) {
+      video.style.transform = `translateY(${scrollOffset * -0.4}px)`;
+    }
+  });
+</script>
+
+<style>
+  .call-to-action {
+    position: relative;
+    height: 100dvh;
+    padding: 10% 5%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-start;
+    box-sizing: border-box;
+    overflow: hidden;
+    color: #000;
+  }
+
+  .etiqueta {
+    font-size: 0.9rem;
+    font-weight: 300;
+    letter-spacing: 0.05rem;
+    /* border-left: 2px solid #000; */
+    padding-left: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .titulo-principal {
+    font-size: 2rem;
+    line-height: 1.2;
+    font-weight: 300;
+    margin: 0;
+    width: 100%;
+  }
+
+  .titulo-principal .light {
+    font-weight: 200;
+    color: #999;
+  }
+
+  .titulo-principal strong {
+    font-weight: 600;
+    color: var(--contrast);
+  }
+
+  .descripcion {
+    font-size: 0.95rem;
+    font-weight: 400;
+    max-width: 70%;
+    line-height: 1.6;
+  }
+
+  .video-container {
+    position: absolute;
+    bottom: 15%;
+    right: 15%;
+    width: 60vw;
+    height: calc(60vw / 1.618);
+  }
+
+  .video-container video {
+    width: 70vw;
+    height: calc(60vw / 1.618);
+    object-fit: cover;
+    border-radius: 3px;
+  }
+  .modifier {
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+  }
+</style>

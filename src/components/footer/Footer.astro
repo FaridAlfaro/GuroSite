@@ -1,0 +1,106 @@
+---
+
+---
+
+
+<footer class="footer">
+    <h2 class="title">Contactanos</h2>
+
+    <div class="footer-container">
+      <!-- Contact Info -->
+
+      <div>
+        <img src="/logos/GuroBlanco.svg" alt="Guro Logo" class="logo" />
+        <a href="mailto:adjustabledevelopment@gmail.com?Subject=Interesado%20en%20el%20servicio" class="icon-text">adjustabledevelopment@gmail.com</p>
+        <a href="https://wa.me/3512401402/?text=Hola!%20Quiero%20trabajar%20con%20ustedes" class="icon-text">+54 3512401402</p>
+      </div>
+  
+      <!-- Navigation -->
+      <div class="navigate">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">Servicios</a></li>
+          <li><a href="/works">Trabajos</a></li>
+          <li><a href="/contact">Contacto</a></li>
+        </ul>
+        <div class="lang-copy">
+            <p>© Guro, Inc.</p>
+        </div>
+      </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <style>
+    .footer {
+	background: var(--contrast);
+    color: white;
+    padding: 2rem;
+    font-family: sans-serif;
+  }
+
+  .footer-container {
+	display: flex;
+	justify-content: space-between;
+  }
+  .title{
+	height: 100px;
+	display: flex;
+	align-items: center;
+  }
+  .navigate{
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+  }
+  @media (min-width: 768px) {
+    .footer-container {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .footer h2 {
+    font-weight: 200;
+	letter-spacing: 2px;
+	font-size: 2rem;
+  }
+
+  .footer h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer p,
+  .footer li,
+  .footer a {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: white;
+    text-decoration: none;
+  }
+.footer ul{
+	margin: 0;
+	padding: 0;
+	li
+}
+  .footer li {
+    list-style: none;
+  }
+
+  .footer a:hover {
+    text-decoration: underline;
+  }
+
+  .footer .logo {
+    height: 50px;
+    margin-bottom: 2rem;
+  }
+
+  .footer .icon-text {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+</style>

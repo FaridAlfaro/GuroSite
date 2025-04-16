@@ -1,0 +1,32 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="404">
+    <section>
+        <img src="/gif/iHG.gif" alt="" />
+        <h1>Error 404</h1>
+        <p>
+            Actualmente, estamos realizando tareas de mantenimiento y
+            actualizaciones estaremos de regreso pronto.
+        </p>
+        <a href="/" class="hero-call-mod">Home &rarr;</a>
+    </section>
+</Layout>
+
+<style>
+    section {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        gap: 2rem;
+    }
+    p {
+        font-size: 1rem;
+        text-align: center;
+        width: 80%;
+    }
+</style>

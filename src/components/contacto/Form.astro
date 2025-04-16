@@ -1,0 +1,124 @@
+---
+
+---
+
+<form
+    data-netlify="true"
+    netlify-honeypot="bot-field"
+    name="Contacto"
+    method="POST"
+    action="/success"
+>
+    <input type="hidden" name="bot-field" />
+    <div style="display: flex; justify-content: space-between;">
+        <div style="width: calc(50% - 4px);">
+            <label for="nombre"
+                >Nombre: <input
+                    type="text"
+                    id="nombre"
+                    name="nombre"
+                    required
+                /></label
+            >
+        </div>
+        <div style="width: calc(50% - 4px);">
+            <label for="nombre_empresa"
+                >Empresa: <input
+                    type="text"
+                    id="nombre_empresa"
+                    name="empresa"
+                    required
+                /></label
+            >
+        </div>
+    </div>
+    <label for="email"
+        >Email:<input type="email" id="email" name="email" required /></label
+    >
+    <label for="telefono"
+        >Número de Celular: <input
+            type="text"
+            id="telefono"
+            name="telefono"
+            required
+        /></label
+    >
+    <button type="submit">Enviar</button>
+</form>
+
+<style>
+    #servicios {
+        background-color: transparent;
+        font-weight: bold;
+        font-family: sans-serif;
+        border: none;
+        margin: 5% 0;
+        width: 100%;
+        color: var(--contrast);
+    }
+    #servicios:focus {
+        text-align: left;
+        transition: text-align ease 1s;
+        color: var(--contrast);
+    }
+
+    form {
+        position: relative;
+        width: 100%;
+        font-weight: normal;
+        letter-spacing: 0.1cap;
+        font-style: italic;
+        font-size: 16px;
+    }
+    input[type="text"],
+    textarea,
+    input[type="email"] {
+        width: 100%; /* Resta 16px para compensar el padding */
+        padding: 8px;
+        margin-bottom: 10px;
+        border: none;
+        border-bottom: 2px solid var(--contrast);
+        box-sizing: border-box;
+        background-color: transparent; /* Fondo transparente */
+        transition:
+            background-color 0.3s,
+            border-color 0.3s; /* Efecto de transición */
+    }
+    input[type="text"]:hover,
+    textarea:hover {
+        border-color: var(
+            --contrast
+        ); /* Cambia el color del borde al hacer hover */
+    }
+    input[type="email"]:hover,
+    textarea:hover {
+        border-color: var(
+            --contrast
+        ); /* Cambia el color del borde al hacer hover */
+    }
+    button {
+        letter-spacing: 2px;
+        width: 100%;
+        background-color: transparent;
+        color: var(--contrast);
+        padding: 10px 20px;
+        border: solid 2px var(--contrast);
+        cursor: pointer;
+        background: transparent;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        color: var(--background);
+        background: var(--contrast);
+    }
+    input[type="submit"]:hover {
+        background-color: var(--contrast);
+        color: var(--background);
+    }
+    @media (max-width: 700px) {
+        input[type="submit"] {
+            width: 100%;
+        }
+    }
+</style>

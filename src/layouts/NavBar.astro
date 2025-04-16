@@ -1,0 +1,321 @@
+<!-- HTML -->
+<div class="navbar" id="navbar">
+  <a href="/" class="logo-container">
+    <img src="/logos/GuroAzul.svg" alt="" />
+  </a>
+  <div class="burger" id="burger">
+    <div class="burger-icon show" id="burgerIcon">Menú</div>
+    <div class="close-icon hide" id="closeIcon">✕</div>
+  </div>
+</div>
+
+<!-- Slide layers -->
+<div class="slide blue" id="slide-blue"></div>
+<div class="slide black" id="slide-black"></div>
+<div class="slide white" id="slide-white"></div>
+
+<!-- Menu content -->
+<div class="menu-content" id="menuContent">
+  <nav>
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/services">Servicios</a>
+    <a href="/works">Trabajos</a>
+    <a href="/contact">Contacto</a>
+  </nav>
+</div>
+
+<slot />
+
+<!-- CSS -->
+<style>
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  body.menu-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+
+  .navbar {
+    position: fixed;
+    width: 100%;
+    height: 64px;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 100;
+    background-color: transparent;
+    opacity: 1;
+    pointer-events: auto;
+    transition:
+      background-color 0.3s ease,
+      opacity 0.3s ease;
+  }
+
+  .navbar.visible-navbar {
+    background-color: var(--background);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .navbar.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1.618rem;
+    margin-left: 5%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .logo-container img {
+    height: 100%;
+  }
+
+  .navbar.visible-navbar .logo-container {
+    opacity: 1;
+  }
+
+  .burger {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 101;
+    margin-right: 5%;
+  }
+
+  .burger-icon,
+  .close-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+      opacity 0.3s ease,
+      color 0.3s ease;
+    color: white;
+  }
+
+  .navbar.visible-navbar .burger-icon,
+  .navbar.visible-navbar .close-icon {
+    color: var(--contrast);
+  }
+
+  .burger-icon.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .burger-icon.hide {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .close-icon.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .close-icon.hide {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .slide {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 90;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .slide.active {
+    pointer-events: auto;
+    opacity: 1;
+  }
+
+  .slide.blue {
+    background-color: black;
+  }
+  .slide.black {
+    background-color: var(--background);
+  }
+  .slide.white {
+    background-color: var(--contrast);
+    z-index: 91;
+  }
+
+  .menu-content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 92;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .menu-content.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .menu-content nav {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .menu-content nav a {
+    font-size: 1.618rem;
+    font-weight: 400;
+    color: var(--background);
+    text-decoration: none;
+    transition: transform ease 0.3s;
+    letter-spacing: 2px;
+  }
+
+  nav a:hover {
+    transform: translateX(5px);
+  }
+</style>
+
+<!-- JS -->
+<script type="module">
+  import anime from "https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.es.js";
+
+  const burger = document.getElementById("burger");
+  const burgerIcon = document.getElementById("burgerIcon");
+  const closeIcon = document.getElementById("closeIcon");
+  const menuContent = document.getElementById("menuContent");
+  const slideBlue = document.getElementById("slide-blue");
+  const slideBlack = document.getElementById("slide-black");
+  const slideWhite = document.getElementById("slide-white");
+  const navbar = document.getElementById("navbar");
+
+  let isOpen = false;
+  let lastScrollTop = 0;
+
+  document.addEventListener("DOMContentLoaded", () => {
+    if (window.scrollY > 0) {
+      navbar.classList.add("visible-navbar");
+    }
+  });
+
+  window.addEventListener("scroll", () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+    if (scrollTop <= 0) {
+      navbar.classList.remove("visible-navbar");
+      navbar.classList.remove("hidden");
+    } else if (scrollTop > lastScrollTop) {
+      navbar.classList.add("hidden");
+      navbar.classList.remove("visible-navbar");
+    } else {
+      navbar.classList.remove("hidden");
+      navbar.classList.add("visible-navbar");
+    }
+
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+  });
+
+  burger.addEventListener("click", () => {
+    if (!isOpen) {
+      isOpen = true;
+      document.body.classList.add("menu-open");
+
+      burgerIcon.classList.remove("show");
+      burgerIcon.classList.add("hide");
+      closeIcon.classList.remove("hide");
+      closeIcon.classList.add("show");
+
+      anime({
+        targets: slideBlue,
+        top: 0,
+        begin: () => slideBlue.classList.add("active"),
+        duration: 150,
+        easing: "easeInOutQuad",
+        complete: () => {
+          anime({
+            targets: slideBlack,
+            top: 0,
+            begin: () => slideBlack.classList.add("active"),
+            duration: 150,
+            easing: "easeInOutQuad",
+            complete: () => {
+              anime({
+                targets: slideWhite,
+                top: 0,
+                begin: () => slideWhite.classList.add("active"),
+                duration: 150,
+                easing: "easeInOutQuad",
+                complete: () => {
+                  menuContent.classList.add("show");
+                },
+              });
+            },
+          });
+        },
+      });
+    } else {
+      isOpen = false;
+      document.body.classList.remove("menu-open");
+      menuContent.classList.remove("show");
+
+      anime({
+        targets: slideWhite,
+        top: "-100%",
+        duration: 150,
+        easing: "easeInOutQuad",
+        complete: () => {
+          slideWhite.classList.remove("active");
+          anime({
+            targets: slideBlack,
+            top: "-100%",
+            duration: 150,
+            easing: "easeInOutQuad",
+            complete: () => {
+              slideBlack.classList.remove("active");
+              anime({
+                targets: slideBlue,
+                top: "-100%",
+                duration: 150,
+                easing: "easeInOutQuad",
+                complete: () => {
+                  slideBlue.classList.remove("active");
+                  closeIcon.classList.remove("show");
+                  closeIcon.classList.add("hide");
+                  burgerIcon.classList.remove("hide");
+                  burgerIcon.classList.add("show");
+                },
+              });
+            },
+          });
+        },
+      });
+    }
+  });
+</script>

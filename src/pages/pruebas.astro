@@ -1,0 +1,168 @@
+---
+---
+
+<section class="works-section" aria-labelledby="works-title">
+  <h2 id="works-title" class="sr-only">Proyectos realizados</h2>
+  <ul class="works-list">
+    <li class="work-entry">
+      <article>
+        <div class="work-index">
+          <span>01</span>
+          <div class="work-text">
+            <span class="work-service">Diseño de marca</span>
+            <h3 class="work-title">Libre</h3>
+            <img src="https://th.bing.com/th/id/OIP.veOfD2wxZ9M7bRpUsbbIsAAAAA?rs=1&pid=ImgDetMain" alt="Diseño de marca para Libre" class="work-image" />
+          </div>
+        </div>
+      </article>
+    </li>
+
+    <li class="work-entry">
+      <article>
+        <div class="work-index">
+          <span>02</span>
+          <div class="work-text">
+            <span class="work-service">Desarrollo web</span>
+            <h3 class="work-title">Budget</h3>
+            <img src="https://th.bing.com/th/id/OIP.veOfD2wxZ9M7bRpUsbbIsAAAAA?rs=1&pid=ImgDetMain" alt="Desarrollo web para Budget" class="work-image" />
+          </div>
+        </div>
+      </article>
+    </li>
+
+    <li class="work-entry">
+      <article>
+        <div class="work-index">
+          <span>03</span>
+          <div class="work-text">
+            <span class="work-service">Marketing digital</span>
+            <h3 class="work-title">Nova</h3>
+            <img src="https://th.bing.com/th/id/OIP.veOfD2wxZ9M7bRpUsbbIsAAAAA?rs=1&pid=ImgDetMain" alt="Marketing digital para Nova" class="work-image" />
+          </div>
+        </div>
+      </article>
+    </li>
+
+    <li class="work-entry">
+      <article>
+        <div class="work-index">
+          <span>04</span>
+          <div class="work-text">
+            <span class="work-service">Estrategia UX/UI</span>
+            <h3 class="work-title">Forma</h3>
+            <img src="https://th.bing.com/th/id/OIP.veOfD2wxZ9M7bRpUsbbIsAAAAA?rs=1&pid=ImgDetMain" alt="Estrategia UX/UI para Forma" class="work-image" />
+          </div>
+        </div>
+      </article>
+    </li>
+  </ul>
+</section>
+
+<style>
+  .works-section {
+    background-color: #cfcfcf;
+    padding: 2rem 1rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    color: #222;
+  }
+
+  .works-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .work-entry {
+    width: 100%;
+    margin: 0 auto 3rem;
+    border-bottom: 1px dashed rgba(0,0,0,0.1);
+    padding-bottom: 2rem;
+  }
+
+  .work-index {
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin-bottom: 0.3rem;
+    display: flex;
+    gap: 0.5rem;
+    color: #333;
+  }
+
+  .work-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .work-title {
+    font-size: 3rem;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+  }
+
+  .work-service {
+    font-size: 0.9rem;
+    color: #555;
+  }
+
+  .work-image {
+    width: 80vw;
+    height: calc(80vw / 1.618);
+    margin-top: calc(1.618rem * 2);
+    border-radius: 3px
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    object-fit: cover;
+    transition: clip-path 0.5s ease-out;
+    clip-path: inset(0% 0% 0% 0%);
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
+
+<script type="module">
+  import anime from 'https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.es.js';
+
+  const images = document.querySelectorAll('.work-image');
+
+  function animateClipPath(img, progress) {
+    const maxCut = 100;
+    const easedProgress = Math.min(Math.max(progress, 0), 1);
+    const cut = easedProgress * maxCut;
+    img.style.clipPath = `inset(0% 0% ${cut}% 0%)`;
+  }
+
+  window.addEventListener('scroll', () => {
+    const viewportHeight = window.innerHeight;
+
+    images.forEach(img => {
+      const rect = img.getBoundingClientRect();
+      const imgBottom = rect.bottom;
+      const imgHeight = rect.height;
+
+      // solo se aplica si la imagen ya pasó el centro de la pantalla hacia arriba
+      if (imgBottom < viewportHeight / 2) {
+        const distanceFromBottom = viewportHeight - imgBottom;
+        const progress = distanceFromBottom / viewportHeight;
+        animateClipPath(img, progress);
+      } else {
+        // restablece clip cuando la imagen está centrada o descendiendo
+        img.style.clipPath = `inset(0% 0% 0% 0%)`;
+      }
+    });
+  });
+</script>

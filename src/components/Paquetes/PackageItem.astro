@@ -1,0 +1,29 @@
+---
+// PackageItem.astro
+interface Props {
+  name: string;
+}
+
+const { name } = Astro.props;
+---
+
+<div class="package-item">
+  {name}
+</div>
+
+<style>
+  .package-item {
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5); /* Light line */
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  .package-item:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly lighter on hover */
+  }
+
+  .package-item:last-child {
+    border-bottom: none; /* Remove border from the last item */
+  }
+</style>
