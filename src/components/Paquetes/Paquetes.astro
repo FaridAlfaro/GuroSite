@@ -4,7 +4,7 @@
 
 <div class="paquetes-section">
   <div class="paquetes-header">
-    <h2>Paquetes</h2>
+    <h2 class="t-stroke t-shadow">Paquetes</h2>
     <p>
       Al adquirir nuestros servicios de esta forma obtenés descuentos especiales
     </p>
@@ -46,20 +46,21 @@
     >
   </div>
 
-  <button class="paquetes-button">+ Paquetes</button>
+  <a class="btn-mod">+ Paquetes</a>
 </div>
 
 <style>
   .paquetes-section {
     color: var(--background);
-    padding: 0 5%;
+    padding: 0% 5%;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    overflow: hidden;
+    justify-content: space-around;
     position: relative;
   }
+  
+
 
   .paquetes-header h2 {
     font-size: 2rem;
@@ -122,23 +123,7 @@
     color: #1d1ddb;
   }
 
-  .paquetes-button {
-    width: 100%;
-    background: transparent;
-    border: 1px solid white;
-    color: white;
-    padding: 0.75rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    z-index: 2;
-    margin-bottom: 15%;
-  }
-
-  .paquetes-button:hover {
-    background-color: white;
-    color: #1d1ddb;
-  }
+  
 </style>
 
 <script type="module">

@@ -1,0 +1,103 @@
+---
+import Layout from "../layouts/Layout.astro"
+import Card from "../components/interface/Card.astro";
+import { getCollection } from "astro:content"
+const services = await getCollection("services")
+
+
+
+---
+
+<Layout title="Services">
+
+    <div class="services-title">
+        <h1 class="title">Paquetes</h1>
+        <h2 class="off"><span>hasta</span>40% OFF</h2>
+        <h2 class="offdes">Al adquirir nuestros servicios de esta forma obtenés descuentos especiales</h2>
+    </div>
+    <main class="container">
+        {
+          services.map(service => {
+              const { slug, data } = service
+              const {title, text, price, link} = data
+              return(
+                  <Card key={data.title} {...data} />
+              )
+          })
+      }
+      <h2>Servicios específicos</h2>
+      <p style="width: 80vw;">Consúltanos respecto a tus necesidades y cotizaremos tus servicios.</p>
+
+      <a href="https://api.whatsapp.com/send?phone=543512401402&text=Hola!%20Estoy%20interesado%20en%20sus%20servicios%20para%3A%20" class="btn">Whatsapp &rarr;</a>
+    </main>
+</Layout>
+
+
+  
+ 
+
+<style>
+    .services-title{
+        height: calc(120vw/2 + 50px);
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: left;
+        background-image: url("/fondos/893.webp");
+        background-size: cover;
+        background-position: 50%;
+        background-color: #0601205b;
+        background-blend-mode:color-burn;
+        flex-direction: column;
+        justify-items: center;
+        h1{
+            margin: 0 10%;
+
+            color: var(--background);
+        }
+        }
+        .off{
+            width:fit-content;
+            color: var(--background);
+            margin: 1rem 10%;
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            font-size: 2rem;
+            position: relative;
+            background: red;
+            span{
+                position: absolute;
+                top: -40%;
+                font-size: .9rem;
+                text-align: center;
+            }
+        }
+        .offdes{
+            color: var(--background);
+            text-align: left;
+            width: 50%;
+        font-weight: 500;
+        font-size: .9rem;
+        line-height: 1.5;
+        margin: 0 10%;
+          }
+  .container{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 100px 0;
+    
+  }
+  .button{
+        color: var(--contrast);
+        border-radius: 50px;
+        width: 30%;
+        border: 1px solid var(--contrast);
+        padding: 1rem;
+        text-align: center;
+    }
+</style>

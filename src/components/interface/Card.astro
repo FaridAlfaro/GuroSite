@@ -1,0 +1,86 @@
+---
+
+interface Props{
+    title: string;
+    text:string;
+    price: string;
+    link: string;
+}
+const {title, text, price, link} = Astro.props
+---
+
+<a  href=`/service${link}` class="container">
+    <div class="title-container">
+        <h3>{title}</h3>
+    </div>
+    <div class="text-container">
+        <p>{text}</p>
+        <strong class="btn">{price}</strong>
+    </div>
+</a>
+
+
+
+
+<style>
+
+    .container{
+        width: 90%;
+        min-height: calc(90vw/2);
+        height: calc(80vw/2);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: solid 1px var(--contrast);
+        border-radius: 3px;
+        animation: side ease-in-out both;
+        animation-timeline: view();
+        animation-range: 0% 50%;
+overflow: hidden;
+    }
+    .title-container{
+        height: 50%;
+        width: 100%;
+        background-color: var(--contrast);
+        color: var(--background);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        justify-items: center;
+        h3{
+            text-transform: uppercase;
+            font-size: 2rem;
+            width: 100%;
+            hyphens: auto;
+            overflow-wrap: break-word;
+            white-space: normal;
+            word-break: normal;
+            text-align: center;
+        }
+    }
+    .text-container{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        p{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            height: 100%;
+            width: 90%;
+            font-size: 1rem;
+        }
+        a{
+            height: 100%;
+            width: 100%;
+            text-align: center;
+        }
+    }
+strong{
+    margin: 5%;
+}
+</style>

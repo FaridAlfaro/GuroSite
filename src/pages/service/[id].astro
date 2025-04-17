@@ -1,0 +1,130 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection, render } from "astro:content";
+
+
+export async function getStaticPaths() {
+    const services = await getCollection("services");
+
+    return services.map((service) => ({
+        params: { id: service.data.link }, // `link` debe corresponder al nombre que aparece en la URL
+        props: { service },
+    }));
+}
+
+const {service} = Astro.props;
+const {data} = service;
+const { title, text, price, link, contact } = data;
+const {Content} = await render(service);
+---
+
+<Layout title={title}>
+
+  <section>
+    <div class="title-container">
+      <h1 class="title">{title}</h1>
+      <a href="404"  class="hero-call">Ver video resúmen</a>
+    </div>
+    <div class="content">
+      <Content />
+    </div>
+    <div class="contact">
+      <p class="price">Agenda una asesoría y adquirí este servicio:<br> 
+        {price}</p>
+      <a href={contact} class="btn"> Cotizar &rarr;</a>
+    </div>
+  </section>
+  
+</Layout>
+
+<style>
+  section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background: var(--background);
+    color: var(--contrast);
+    p, li, span{
+      color: black;
+    }
+  }
+
+  .title-container {
+    height: 90vh;
+    background-color: var(--contrast);
+    color: var(--background);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    width: 100vw;
+  }
+  .title{
+    font-size: 1.618rem;
+  }
+  .content {
+    width: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 90%;
+    line-height: 20px;
+    p{
+      margin: 2rem 0;
+    }
+    strong{
+      margin: 0;
+    }
+    li{
+      font-size: 1rem;
+      line-height: 25px;
+      margin-left: 2rem;
+      width: 80%;
+      animation: sideLeft linear both 1s;
+        animation-timeline: view();
+        animation-range: 0% 50%;
+    }
+    h1{
+      border-bottom: 2px solid var(--contrast);
+      width: auto;
+      margin-top: 2rem;
+    }
+    h2, h3 {
+    margin-top: 1.618rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    text-align: left;
+    border-bottom: 2px solid var(--background);
+    width: auto;
+  }
+  }
+
+  .contact {
+    height: 30vh;
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 0;
+    gap: 2rem;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 1.618rem;
+    background: var(--background);
+    border-radius: 25px;
+  }
+  .price{
+    color: var(--contrast);
+    font-size: 1.618rem;
+    width: 90%;
+  }
+
+  /* Estilo para listas generadas por Markdown */
+
+
+
+
+</style>

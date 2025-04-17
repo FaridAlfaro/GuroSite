@@ -57,7 +57,7 @@ import Footer from "../components/footer/Footer.astro";
 									"middle-section",
 								)
 							) {
-								document.body.style.backgroundColor = "#2D21DE";
+								document.body.style.backgroundColor = "var(--contrast)";
 							}
 						} else {
 							animateOut(entry.target);
@@ -89,8 +89,8 @@ import Footer from "../components/footer/Footer.astro";
 	:root {
 		--background: #fff; /* Ejemplo: azul */
 		--contrast: #2d21de;
-		--text-color: black;
-		--neutral: #cccccc;
+		--text-color: #FF6B6B;
+		--neutral: ;
 		--line-color: rgb(219, 219, 219);
 	}
 
@@ -135,8 +135,9 @@ import Footer from "../components/footer/Footer.astro";
 	}
 	@keyframes side {
 		from {
-			filter: blur(20px);
+			filter: blur(5px);
 			opacity: 0;
+			filter: brightness(0);
 			/* display: none; */
 			/* opacity: 0; */
 		}
@@ -154,10 +155,25 @@ import Footer from "../components/footer/Footer.astro";
 		color: var(--contrast);
 		transition: all 0.3s ease;
 	}
+	.btn-mod{
+		font-size: 1rem;
+		font-weight: 400;
+		text-decoration: none;
+		padding: 1rem;
+		color: var(--background);
+		border: 2px solid var(--background);
+		background: transparent;
+		color: var(--background);
+		transition: all 0.3s ease;
+	}
 
 	.btn:hover {
 		background: var(--contrast);
 		color: #fff;
+	}
+	.btn-mod:hover {
+		background: var(--background);
+		color: var(--contrast);
 	}
 </style>
 
