@@ -73,7 +73,7 @@ import Footer from "../components/footer/Footer.astro";
 					});
 				},
 				{
-					threshold: 0.4,
+					threshold: 0.5,
 					rootMargin: "0px 0px 0px 0px",
 				},
 			);
@@ -111,6 +111,10 @@ import Footer from "../components/footer/Footer.astro";
 		text-decoration: none;
 		cursor: pointer;
 	}
+	.fade-section {
+    opacity: 0;
+    transition: opacity .1s ease;
+  }
 	@keyframes fade-up {
 		from {
 			filter: blur(20px);
@@ -156,3 +160,4 @@ import Footer from "../components/footer/Footer.astro";
 		color: #fff;
 	}
 </style>
+
