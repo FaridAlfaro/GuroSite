@@ -20,8 +20,6 @@ function runAnimation() {
         duration: 1000,
         delay: anime.stagger(100)
       });
-
-      setTimeout(runAnimation, 10000);
     }
   });
 }

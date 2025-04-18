@@ -2,14 +2,14 @@
 
 ---
 <section class="pyme">
+  <div class="text">
     <h2>Programa <span>Pyme</span></h2>
     <p>
       Si conocés alguna pyme que creas que necesite de nuestra ayuda, 
       podés colocar sus datos y trataremos de contactarla.
-      <span>
-        Recibirás un porcentaje como agradecimiento :)
-      </span>
     </p>
+  </div>
+    
     <form
       data-netlify="true"
       netlify-honeypot="bot-field"
@@ -179,5 +179,116 @@
         input[type="submit"] {
             width: 100%;
         }
+    }
+    @media (min-width: 1280px) {
+      .pyme{
+        padding: 0 5%;
+        height: 100vh;
+        color: var(--background);
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: left;
+    }
+    .pyme h2, h3{
+        font-size: calc(1.618rem * 2);
+        font-weight: 200;
+    }
+    .pyme h2 span{
+        font-style: italic;
+        font-weight: 500;
+    }
+    
+    .pyme p{
+        font-weight: 300;
+        line-height: 1.5;
+        font-size: 2rem;
+        width: 70%;
+    }
+    .pyme p span{
+        font-style: italic;
+        font-weight: 500;
+    }
+    .form-subtitle {
+        padding: 1rem;
+        background: var(--background);
+        color: var(--contrast);
+        font-style:normal;
+    font-size: 1.618rem;
+    font-weight: 200;
+    span{
+        font-style: italic;
+        font-weight: 500;
+    }
+  }
+    #servicios {
+        background-color: transparent;
+        font-weight: bold;
+        border: none;
+        margin: 5% 0;
+        width: 100%;
+        color: var(--background);
+    }
+    #servicios:focus {
+        text-align: left;
+        transition: text-align ease 1s;
+        color: var(--background);
+    }
+
+    form {
+        position: relative;
+        width: 100%;
+        font-weight: normal;
+        letter-spacing: 0.1cap;
+        font-style: italic;
+        font-size: 16px;
+    }
+    input[type="text"],
+    textarea,
+    input[type="email"] {
+        width: 100%; /* Resta 16px para compensar el padding */
+        padding: 8px;
+        margin-bottom: 10px;
+        border: none;
+        border-bottom: 2px solid var(--background);
+        box-sizing: border-box;
+        background-color: transparent; /* Fondo transparente */
+        transition:
+            background-color 0.3s,
+            border-color 0.3s; /* Efecto de transición */
+    }
+    input[type="text"]:hover,
+    textarea:hover {
+        border-color: var(
+            --background
+        ); /* Cambia el color del borde al hacer hover */
+    }
+    input[type="email"]:hover,
+    textarea:hover {
+        border-color: var(
+            --background
+        ); /* Cambia el color del borde al hacer hover */
+    }
+    button {
+        letter-spacing: 2px;
+        width: 100%;
+        background-color: transparent;
+        color: var(--background);
+        padding: 10px 20px;
+        border: solid 2px var(--background);
+        cursor: pointer;
+        background: transparent;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        color: var(--contrast);
+        background: var(--background);
+    }
+    input[type="submit"]:hover {
+        background-color: var(--background);
+        color: var(--contrast);
+
+    }
     }
 </style>

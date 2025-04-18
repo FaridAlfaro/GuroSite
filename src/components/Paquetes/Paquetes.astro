@@ -46,14 +46,14 @@
     >
   </div>
 
-  <a class="btn-mod">+ Paquetes</a>
+  <a class="btn-mod modifier">+ Paquetes</a>
 </div>
 
 <style>
   .paquetes-section {
     color: var(--background);
     padding: 0% 5%;
-    height: 100vh;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -66,7 +66,6 @@
     font-size: 2rem;
     margin: 0;
     font-weight: 500;
-    text-transform: uppercase;
   }
 
   .paquetes-header p {
@@ -122,7 +121,85 @@
     background-color: white;
     color: #1d1ddb;
   }
+  @media (min-width: 1280px) {
+    .paquetes-section {
+      padding: 10% 5%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      position: relative;
+  }
+  
 
+
+  .paquetes-header h2 {
+    font-size: 4rem;
+    margin-top: 50px;
+    font-weight: 300;
+  }
+
+  .paquetes-header p {
+    font-size: 2rem;
+    margin-top: 1rem;
+    line-height: 1.5;
+    font-weight: 200;
+    width: 40%;
+  }
+
+  .paquetes-img {
+    position: absolute;
+    top: 25%;
+    right: 10%;
+    width: 50vw;
+    height: calc(50vw / 1.618);
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border-radius: 3px;
+    transition: opacity 0.5s ease;
+    z-index: -1;
+  }
+
+  .ghost {
+    opacity: 0;
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .paquetes-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 2;
+  }
+
+  .paquetes-list a {
+    padding: 1rem 0;
+    color: var(--background);
+    text-decoration: none;
+    font-weight: 400;
+    width: 50%;
+    position: relative;
+    padding-bottom: 5px;
+    font-size: calc(1.618rem*2);
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--background);
+    transition: background-color 0.3s;
+  }
+
+  .paquetes-list a:hover {
+    background-color: white;
+    color: #1d1ddb;
+  }
+  .modifier{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+  }
+  }
   
 </style>
 
