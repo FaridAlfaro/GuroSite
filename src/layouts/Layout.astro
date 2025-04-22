@@ -67,7 +67,7 @@ import Footer from "../components/footer/Footer.astro";
 									"middle-section",
 								)
 							) {
-								document.body.style.backgroundColor = "#fff";
+								document.body.style.backgroundColor = "var(--background)";
 							}
 						}
 					});
@@ -84,97 +84,110 @@ import Footer from "../components/footer/Footer.astro";
 </html>
 
 <style is:global>
-	@import url("https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
+	@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100..900&family=Montserrat:wght@100..900&family=Space+Mono&display=swap");
+  
 	:root {
-		--background: #fff; /* Ejemplo: azul */
-		--contrast: #2d21de;
-		--text-color: #FF6B6B;
-		--neutral: ;
-		--line-color: rgb(219, 219, 219);
-	}
+		--background: #f3f3f9;      /* Fondo general claro */
+		--contrast: #010102;        /* Color principal */
 
+		--azul3: #4f42e4;   /* Hover / íconos activos */
+		--azul2: #7a73ec; /* Fondos secundarios */
+		--azul1: #b4b1f7;    /* Fondo pastel / muy claro */
+
+		--azul4: #2218b2;    /* Hover oscuro / contraste */
+		--azul5: #1a1287;  /* Fondo profundo / modo oscuro */
+		--gris2: #3b3b55;    /* Texto oscuro o complementario */
+		--gris1: #e0e0f0;   /* Divisores o bordes sutiles */
+	}
+  
 	html,
 	body {
-		box-sizing: border-box;
-		padding: 0;
-		margin: 0;
-		font-family: "Poppins", serif;
-		font-weight: 500;
-		font-style: normal;
-		font-size: 14px;
-		overflow-x: hidden;
+	  box-sizing: border-box;
+	  padding: 0;
+	  margin: 0;
+	  font-family: "Montserrat", sans-serif;
+	  font-weight: 00;
+	  font-size: 14px;
+	  overflow-x: hidden;
 	}
-
-	a,
-	a:visited {
-		color: inherit;
-		text-decoration: none;
-		cursor: pointer;
+  
+	h1, h2, h3, h4, h5, h6 {
+	  font-family: "Montserrat", sans-serif;
 	}
+  
+	p, a, span, li, button, input, textarea {
+	  font-family: "Montserrat", sans-serif;
+	}
+  
+	.LogoText {
+	  font-family: "Space Mono", monospace;
+	}
+  
+	a, a:visited {
+	  color: inherit;
+	  text-decoration: none;
+	  cursor: pointer;
+	}
+  
 	.fade-section {
-    opacity: 0;
-    transition: opacity .1s ease;
-  }
+	  opacity: 0;
+	  transition: opacity .1s ease;
+	}
+  
 	@keyframes fade-up {
-		from {
-			filter: blur(20px);
-			opacity: 0;
-		}
-		to {
-		}
+	  from {
+		filter: blur(20px);
+		opacity: 0;
+	  }
+	  to {}
 	}
+  
 	@keyframes slide-up {
-		from {
-			transform: translateY(-20vh);
-			/* height: 0%; */
-			/* display: none; */
-			/* opacity: 0; */
-		}
-		to {
-		}
+	  from {
+		transform: translateY(-20vh);
+	  }
+	  to {}
 	}
+  
 	@keyframes side {
-		from {
-			filter: blur(5px);
-			opacity: 0;
-			filter: brightness(0);
-			/* display: none; */
-			/* opacity: 0; */
-		}
-		to {
-		}
+	  from {
+		filter: blur(5px);
+		opacity: 0;
+		filter: brightness(0);
+	  }
+	  to {}
 	}
+  
 	.btn {
-		font-size: 1rem;
-		font-weight: 400;
-		text-decoration: none;
-		padding: 1rem;
-		color: var(--contrast);
-		border: 2px solid var(--contrast);
-		background: transparent;
-		color: var(--contrast);
-		transition: all 0.3s ease;
+	  font-size: 1rem;
+	  font-weight: 400;
+	  text-decoration: none;
+	  padding: 1rem;
+	  color: var(--contrast);
+	  border: 2px solid var(--contrast);
+	  background: transparent;
+	  transition: all 0.3s ease;
 	}
-	.btn-mod{
-		font-size: 1rem;
-		font-weight: 400;
-		text-decoration: none;
-		padding: 1rem;
-		color: var(--background);
-		border: 2px solid var(--background);
-		background: transparent;
-		color: var(--background);
-		transition: all 0.3s ease;
+  
+	.btn-mod {
+	  font-size: 1rem;
+	  font-weight: 400;
+	  text-decoration: none;
+	  padding: 1rem;
+	  color: var(--background);
+	  border: 2px solid var(--background);
+	  background: transparent;
+	  transition: all 0.3s ease;
 	}
-
+  
 	.btn:hover {
-		background: var(--contrast);
-		color: #fff;
+	  background: var(--contrast);
+	  color: #fff;
 	}
+  
 	.btn-mod:hover {
-		background: var(--background);
-		color: var(--contrast);
+	  background: var(--background);
+	  color: var(--contrast);
 	}
-</style>
-
+  </style>
+  

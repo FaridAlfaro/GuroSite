@@ -10,10 +10,15 @@
     <span class="light">Creative Company</span><br />
     <strong>Where Technology<br />and Emotion Meet.</strong>
   </h1>
-
+  <p class="descripcion">
+    Ayudamos a pequeñas y medianas empresas a destacar a través de
+    marcas atractivas, sitios web de alto rendimiento y automatización de
+    campañas.
+  </p>
+  <a href="/about" class="btn modifier">About →</a>
   <div class="video-container" id="rootNode">
     <video
-      src="/video/trabajos.mp4"
+      src="/video/file.mp4"
       class="video"
       autoplay
       loop
@@ -22,14 +27,6 @@
     >
     </video>
   </div>
-
-  <p class="descripcion">
-    Ayudamos a pequeñas y medianas empresas a destacar a través de
-    marcas atractivas, sitios web de alto rendimiento y automatización de
-    campañas.
-  </p>
-
-  <a href="/contacto" class="btn modifier">About →</a>
 </section>
 <script type="module" src="/animacion/animate.js"></script>
 <script type="module" src="/animacion/grafo.js"></script>
@@ -127,23 +124,23 @@
   }
 
   .video-container {
-    position: absolute;
-    bottom: 15%;
-    right: 15%;
-    width: 60vw;
-    height: calc(60vw / 1.618);
+    width: 100vw;
+    height: calc(100vw / 1.618);
+    z-index: 2;
+    transform: translateX(-5%);
   }
 
   .video-container video {
-    width: 70vw;
-    height: calc(70vw / 1.618);
+    width: 100vw;
+    height: 100vw;
     object-fit: cover;
     border-radius: 3px;
   }
   .modifier {
-    position: absolute;
-    bottom: 5%;
-    right: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
   }
   @media (min-width: 1280px) {
     .call-to-action {
@@ -171,7 +168,7 @@
   .titulo-principal {
     font-size: 4rem;
     line-height: 1.2;
-    font-weight: 300;
+    font-weight: 200;
     margin: 0;
     width: 100%;
   }
@@ -182,13 +179,13 @@
   }
 
   .titulo-principal strong {
-    font-weight: 600;
+    font-weight: 400;
     color: var(--contrast);
   }
 
   .descripcion {
     font-size: 2rem;
-    font-weight: 400;
+    font-weight: 300;
     max-width: 50%;
     line-height: 1.6;
   }

@@ -9,13 +9,8 @@
   </div>
 </div>
 
-<!-- Slide layers -->
-<div class="slide blue" id="slide-blue"></div>
-<div class="slide black" id="slide-black"></div>
-<div class="slide white" id="slide-white"></div>
 
-<!-- Menu content -->
-<div class="menu-content" id="menuContent">
+<div class="menu-panel" id="menuPanel">
   <nav>
     <a href="/">Home</a>
     <a href="/about">About</a>
@@ -25,15 +20,11 @@
   </nav>
 </div>
 
+
 <slot />
 
 <!-- CSS -->
 <style>
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-  }
 
   body.menu-open {
     overflow: hidden;
@@ -44,7 +35,7 @@
   .navbar {
     position: fixed;
     width: 100%;
-    height: 64px;
+    height: 10%;
     top: 0;
     left: 0;
     display: flex;
@@ -65,12 +56,12 @@
     justify-content: center;
     align-items: center;
     height: 100%;
-    margin-left: 5%;
+    margin-left: 2%;
     transition: opacity 0.3s ease;
   }
   .logo-container img {
-    height: 1.618rem;
-    margin-bottom: 10px;
+    filter: brightness(0);
+    height: 60%;
     animation: fondo-color linear both;
     animation-timeline: scroll(block);
     animation-range: entry 0% cover 1vh;
@@ -82,11 +73,11 @@
 
   .burger {
     position: relative;
-    width: 10%;
+    width: auto;
     height: 100%;
     cursor: pointer;
     z-index: 101;
-    margin-right: 5%;
+    margin-right: 3%;
     animation: fondo-color linear both;
     animation-timeline: scroll(block);
     animation-range: entry 0% cover 1vh;
@@ -107,6 +98,8 @@
       opacity 0.3s ease,
       color 0.3s ease;
     color: var(--contrast);
+    font-weight: normal;
+    font-size: 2rem;
   }
 
  
@@ -201,11 +194,103 @@
     color: var(--background);
   }
 }
+@keyframes fondo-img {
+  from{
+    opacity: 0;
+  }
+}
 @keyframes fondo-fondo {
   to{
     background-color: var(--background);
   }
 }
+.menu-panel {
+  position: fixed;
+  top: -40vh;
+  left: 0;
+  width: 100%;
+  height: 40vh;
+  background-color: var(--background); 
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+  pointer-events: none;
+  border-radius: 0 0 20px 20px;
+}
+.menu-panel.active {
+  pointer-events: auto;
+}
+
+.menu-panel nav {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+.navbar {
+  transition: transform 0.4s ease-in-out;
+}
+
+.navbar.navbar-hidden {
+  transform: translateY(-100%);
+}
+@media (max-width: 767px)  {
+  .navbar{
+    height: 64px;
+  }
+  .menu-panel nav {
+  display: flex;
+  flex-direction: column;
+  gap:1rem;
+  margin-bottom: 2rem;
+}
+.menu-panel{
+  justify-content: flex-end;
+}
+}
+.menu-panel nav a {
+  font-size: 1.618rem;
+  font-weight: 400;
+  color: var(--contrast);
+  text-decoration: none;
+  transition: transform ease 0.3s;
+  letter-spacing: 2px;
+}
+.menu-panel nav a:hover {
+  transform: translateX(5px);
+}
+.burger {
+    position: relative;
+    width: 20%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 101;
+    margin-right: 0%;
+    animation: fondo-color linear both;
+    animation-timeline: scroll(block);
+    animation-range: entry 0% cover 1vh;
+  }
+
+  .burger-icon,
+  .close-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    transition:
+      opacity 0.3s ease,
+      color 0.3s ease;
+    color: var(--contrast);
+    font-weight: bold;
+    font-size: 1rem;
+  }
 </style>
 
 <!-- JS -->
@@ -215,20 +300,20 @@
   const burger = document.getElementById("burger");
   const burgerIcon = document.getElementById("burgerIcon");
   const closeIcon = document.getElementById("closeIcon");
-  const menuContent = document.getElementById("menuContent");
-  const slideBlue = document.getElementById("slide-blue");
-  const slideBlack = document.getElementById("slide-black");
-  const slideWhite = document.getElementById("slide-white");
-  const navbar = document.getElementById("navbar");
+  const menuPanel = document.getElementById("menuPanel");
 
   let isOpen = false;
-  let lastScrollTop = 0;
-
+  let scrollY = 0;
 
   burger.addEventListener("click", () => {
     if (!isOpen) {
       isOpen = true;
-      document.body.classList.add("menu-open");
+
+      // Congelar scroll sin moverlo
+      scrollY = window.scrollY;
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = "100%";
 
       burgerIcon.classList.remove("show");
       burgerIcon.classList.add("hide");
@@ -236,69 +321,57 @@
       closeIcon.classList.add("show");
 
       anime({
-        targets: slideBlue,
-        top: 0,
-        begin: () => slideBlue.classList.add("active"),
-        duration: 150,
-        easing: "easeInOutQuad",
-        complete: () => {
-          anime({
-            targets: slideBlack,
-            top: 0,
-            begin: () => slideBlack.classList.add("active"),
-            duration: 150,
-            easing: "easeInOutQuad",
-            complete: () => {
-              anime({
-                targets: slideWhite,
-                top: 0,
-                begin: () => slideWhite.classList.add("active"),
-                duration: 150,
-                easing: "easeInOutQuad",
-                complete: () => {
-                  menuContent.classList.add("show");
-                },
-              });
-            },
-          });
-        },
+        targets: menuPanel,
+        top: "0",
+        duration: 600,
+        easing: "easeInOutCubic",
+        begin: () => {
+          menuPanel.classList.add("active");
+        }
       });
+
     } else {
       isOpen = false;
-      document.body.classList.remove("menu-open");
-      menuContent.classList.remove("show");
+
+      burgerIcon.classList.add("show");
+      burgerIcon.classList.remove("hide");
+      closeIcon.classList.add("hide");
+      closeIcon.classList.remove("show");
 
       anime({
-        targets: slideWhite,
-        top: "-100%",
-        duration: 150,
-        easing: "easeInOutQuad",
+        targets: menuPanel,
+        top: "-100vh",
+        duration: 600,
+        easing: "easeInOutCubic",
         complete: () => {
-          slideWhite.classList.remove("active");
-          anime({
-            targets: slideBlack,
-            top: "-100%",
-            duration: 150,
-            easing: "easeInOutQuad",
-            complete: () => {
-              slideBlack.classList.remove("active");
-              anime({
-                targets: slideBlue,
-                top: "-100%",
-                duration: 150,
-                easing: "easeInOutQuad",
-                complete: () => {
-                  slideBlue.classList.remove("active");
-                  closeIcon.classList.remove("show");
-                  closeIcon.classList.add("hide");
-                  burgerIcon.classList.remove("hide");
-                  burgerIcon.classList.add("show");
-                },
-              });
-            },
-          });
-        },
+          menuPanel.classList.remove("active");
+
+          // Restaurar scroll y desbloquear
+          document.body.style.position = "";
+          document.body.style.top = "";
+          document.body.style.width = "";
+          window.scrollTo(0, scrollY);
+        }
       });
     }
   });
+  let lastScroll = window.scrollY;
+const navbar = document.getElementById("navbar");
+
+window.addEventListener("scroll", () => {
+  const currentScroll = window.scrollY;
+  const isScrollingDown = currentScroll > lastScroll;
+  const passedThreshold = currentScroll > window.innerHeight /2;
+
+  if (passedThreshold) {
+    if (isScrollingDown) {
+      navbar.classList.add("navbar-hidden");
+    } else {
+      navbar.classList.remove("navbar-hidden");
+    }
+  }
+
+  lastScroll = currentScroll;
+});
 </script>
+

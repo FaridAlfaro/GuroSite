@@ -22,7 +22,7 @@ function init() {
     const nextImgs = next.querySelectorAll(".img");
     const nextText = next.querySelectorAll(".content .letter");
 
-    const t = 400;
+    const t = 200;
     const offset = "-=" + t*.4;
     const imgOffset = t*.8;
 
