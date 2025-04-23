@@ -2,104 +2,108 @@
 // Contacto.astro - Componente
 ---
 <section class="contacto">
-    <h2>¿Hablamos?</h2>
-  
-    <div class="botones">
-      <a href="https://wa.me/549XXXXXXXXXX" target="_blank" class="btn whatsapp">
-        Contactar por WhatsApp
-      </a>
-      <a href="mailto:contacto@tudominio.com" class="btn mail">
-        Contactar por Correo
-      </a>
-      <a href="/contact" class="btn form">
-        Quiero que me contacten
-      </a>
-    </div>
-  </section>
-  
-  <style>
-    .contacto {
-        height: 100vh;
-        padding: 0 5%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
-  
-    .contacto h2 {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 10%;
-      color: var(--contrast);
-      font-weight: 500;
-      width: 100%;
-    }
-  
-    .contacto p {
-      margin-bottom: 2rem;
-      line-height: 1.6;
-    }
-  
-    .botones {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 1rem;
-      width: 100%;
-    }
-  
-    .whatsapp {
-        text-align: center;
-      background: #25d366;
-      border: none;
-      color: var(--background);
-    }
-  
-    .whatsapp:hover {
-      background: #1ebe5d;
-      
-    }
-  
-    .mail {
-        border: none;
-      background: #0072c6;
-      color: var(--background);
-      text-align: center;
+  <h2>Let’s Talk</h2>
 
-    }
-  
-    .mail:hover {
-      background: #005b9f;
-      
-    }
-    .form{
-        color: var(--contrast); 
-        text-align: center;
-    }
-    .form:hover{
-        color: var(--background);
-    }
-    @media (min-width: 1280px) {
-      .botones {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 1rem;
-      width: 30%;
-    }
+  <div class="botones">
+    <a href="https://wa.me/549XXXXXXXXXX" target="_blank" class="btn whatsapp">
+      Hit us up on WhatsApp
+    </a>
+    <a href="mailto:contacto@tudominio.com" class="btn mail">
+      Shoot us an email
+    </a>
+    <a href="/contact" class="btn form">
+      I want to be contacted
+    </a>
+  </div>
+</section>
+
+<style>
+  .contacto {
+    height: 100vh;
+    padding: 0 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .contacto h2 {
+    text-align: left;
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 10%;
+    color: var(--contrast);
+    width: 100%;
+  }
+
+  .botones {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-around;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .btn {
+    width: 35vw;
+    height: 35vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.25rem;
+    font-weight: 500;
+    text-align: center;
+    border: none;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .whatsapp {
+    background: #25d366;
+    color: var(--background);
+  }
+
+  .whatsapp:hover {
+    background: #1ebe5d;
+  }
+
+  .mail {
+    background: #0072c6;
+    color: var(--background);
+  }
+
+  .mail:hover {
+    background: #005b9f;
+  }
+
+  .form {
+    background: transparent;
+    border: 2px solid var(--contrast);
+    color: var(--contrast);
+  }
+
+  .form:hover {
+    background: var(--contrast);
+    color: var(--background);
+  }
+
+  @media (min-width: 1280px) {
+    .contacto {
+    flex-direction: row;
+  }
+
     .contacto h2 {
-      text-align: center;
       font-size: 4rem;
-      margin-bottom: 10%;
-      color: var(--contrast);
-      font-weight: 500;
-      width: 100%;
+      margin-bottom: 5%;
     }
-  
-    .contacto a {
+    .botones{
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+    .btn {
       font-size: 2rem;
+      height: 250px;
     }
-    }
-  </style>
-  
+  }
+</style>

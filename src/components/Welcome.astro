@@ -89,98 +89,99 @@
    }
 }
 </style>
+
 <script type="module">
-   import anime from "https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.es.js";
- 
-   const video = document.querySelector("video");
-   const header = document.querySelector("header");
- 
-   let animating = false;
-   let videoTop = 60; // en vh
-   let scrollLocked = true;
- 
-   // Al inicio: bloquear scroll
-   lockScroll();
- 
-   function lockScroll() {
-     scrollLocked = true;
-     document.documentElement.classList.add("lock-scroll");
-     document.body.classList.add("lock-scroll");
-   }
- 
-   function unlockScroll() {
-     scrollLocked = false;
-     document.documentElement.classList.remove("lock-scroll");
-     document.body.classList.remove("lock-scroll");
-   }
- 
-   window.addEventListener("wheel", handleScroll, { passive: false });
- 
-   function handleScroll(e) {
-     const direction = e.deltaY > 0 ? "down" : "up";
- 
-     if (animating) return;
- 
-     if (scrollLocked) {
-       e.preventDefault();
- 
-       if (direction === "down") {
-         animating = true;
-         anime({
-           targets: video,
-           top: "0vh",
-           easing: "easeOutQuad",
-           duration: 500,
-           complete: () => {
-             animating = false;
-             videoTop = 0;
-             unlockScroll();
-           }
-         });
-       }
-     } else {
-       // Si ya se hizo scroll y el usuario vuelve arriba del todo
-       if (window.scrollY <= 0 && direction === "up") {
-         e.preventDefault();
- 
-         animating = true;
-         lockScroll();
-         anime({
-           targets: video,
-           top: "60vh",
-           easing: "easeOutQuad",
-           duration: 500,
-           complete: () => {
-             animating = false;
-             videoTop = 60;
-           }
-         });
-       }
-     }
-   }
-   let startY = 0;
+  import anime from "https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.es.js";
 
-window.addEventListener("touchstart", (e) => {
-  startY = e.touches[0].clientY;
-}, { passive: false });
+  const video = document.querySelector("video");
+  const header = document.querySelector("header");
 
-window.addEventListener("touchmove", (e) => {
-  const currentY = e.touches[0].clientY;
-  const deltaY = startY - currentY;
+  let animating = false;
+  let videoTop = 60; // en vh
+  let scrollLocked = true;
 
-  // Simulamos scroll hacia abajo con touch
-  if (deltaY > 10) {
-    e.deltaY = 100;
-    handleScroll(e);
+  lockScroll();
+
+  function lockScroll() {
+    scrollLocked = true;
+    document.documentElement.classList.add("lock-scroll");
+    document.body.classList.add("lock-scroll");
   }
 
-  // Simulamos scroll hacia arriba con touch
-  if (deltaY < -10) {
-    e.deltaY = -100;
-    handleScroll(e);
+  function unlockScroll() {
+    scrollLocked = false;
+    document.documentElement.classList.remove("lock-scroll");
+    document.body.classList.remove("lock-scroll");
   }
-}, { passive: false });
 
- </script>
+  window.addEventListener("wheel", handleScroll, { passive: false });
+
+  function handleScroll(e) {
+    const direction = e.deltaY > 0 ? "down" : "up";
+
+    if (animating) return;
+
+    if (scrollLocked) {
+      e.preventDefault();
+
+      if (direction === "down") {
+        animating = true;
+        anime({
+          targets: video,
+          top: "0vh",
+          easing: "easeOutQuad",
+          duration: 800,
+          complete: () => {
+            // Esperar medio segundo antes de desbloquear
+            setTimeout(() => {
+              animating = false;
+              videoTop = 0;
+              unlockScroll();
+            }, 500);
+          }
+        });
+      }
+    } else {
+      if (window.scrollY <= 0 && direction === "up") {
+        e.preventDefault();
+
+        animating = true;
+        lockScroll();
+        anime({
+          targets: video,
+          top: "60vh",
+          easing: "easeOutQuad",
+          duration: 500,
+          complete: () => {
+            animating = false;
+            videoTop = 60;
+          }
+        });
+      }
+    }
+  }
+
+  let startY = 0;
+
+  window.addEventListener("touchstart", (e) => {
+    startY = e.touches[0].clientY;
+  }, { passive: false });
+
+  window.addEventListener("touchmove", (e) => {
+    const currentY = e.touches[0].clientY;
+    const deltaY = startY - currentY;
+
+    if (deltaY > 10) {
+      e.deltaY = 100;
+      handleScroll(e);
+    }
+
+    if (deltaY < -10) {
+      e.deltaY = -100;
+      handleScroll(e);
+    }
+  }, { passive: false });
+</script>
+
  
 

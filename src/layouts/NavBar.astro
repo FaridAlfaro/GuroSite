@@ -1,7 +1,7 @@
 <!-- HTML -->
 <div class="navbar" id="navbar">
   <a href="/" class="logo-container">
-    <img src="/logos/GuroAzul.svg" alt="" />
+    <img src="/logos/GuroBlanco.svg" alt="" />
   </a>
   <div class="burger" id="burger">
     <div class="burger-icon show" id="burgerIcon">Menú</div>
@@ -30,6 +30,7 @@
     overflow: hidden;
     position: fixed;
     width: 100%;
+    
   }
 
   .navbar {
@@ -48,6 +49,7 @@
     animation: fondo-fondo linear both;
         animation-timeline: scroll(block);
         animation-range: entry 0% cover 50vh;
+        
   }
   
 
@@ -58,9 +60,9 @@
     height: 100%;
     margin-left: 2%;
     transition: opacity 0.3s ease;
+    
   }
   .logo-container img {
-    filter: brightness(0);
     height: 60%;
     animation: fondo-color linear both;
     animation-timeline: scroll(block);
@@ -80,7 +82,7 @@
     margin-right: 3%;
     animation: fondo-color linear both;
     animation-timeline: scroll(block);
-    animation-range: entry 0% cover 1vh;
+    animation-range: entry 0% cover 100vh;
   }
 
   .burger-icon,
@@ -97,9 +99,9 @@
     transition:
       opacity 0.3s ease,
       color 0.3s ease;
-    color: var(--contrast);
+    color: var(--background);
     font-weight: normal;
-    font-size: 2rem;
+    font-size: 1.618rem;
   }
 
  
@@ -116,6 +118,7 @@
   .close-icon.show {
     opacity: 1;
     pointer-events: auto;
+    
   }
   .close-icon.hide {
     opacity: 0;
@@ -131,6 +134,7 @@
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.2s ease;
+    
   }
 
   .slide.active {
@@ -190,18 +194,18 @@
   }
   @keyframes fondo-color {
   from{
-    filter: saturate(0) brightness(100);
+    filter: brightness(1);
     color: var(--background);
   }
 }
 @keyframes fondo-img {
   from{
-    opacity: 0;
+    opacity: 1;
   }
 }
 @keyframes fondo-fondo {
   to{
-    background-color: var(--background);
+    background-color: var(--contrast);
   }
 }
 .menu-panel {
@@ -249,7 +253,6 @@
 .menu-panel{
   justify-content: flex-end;
 }
-}
 .menu-panel nav a {
   font-size: 1.618rem;
   font-weight: 400;
@@ -275,22 +278,11 @@
 
   .burger-icon,
   .close-icon {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    transition:
-      opacity 0.3s ease,
-      color 0.3s ease;
-    color: var(--contrast);
-    font-weight: bold;
+  
     font-size: 1rem;
   }
+}
+
 </style>
 
 <!-- JS -->
@@ -361,7 +353,7 @@ const navbar = document.getElementById("navbar");
 window.addEventListener("scroll", () => {
   const currentScroll = window.scrollY;
   const isScrollingDown = currentScroll > lastScroll;
-  const passedThreshold = currentScroll > window.innerHeight /2;
+  const passedThreshold = currentScroll > window.innerHeight/5;
 
   if (passedThreshold) {
     if (isScrollingDown) {

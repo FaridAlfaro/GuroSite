@@ -3,7 +3,7 @@
 ---
 
 <section class="call-to-action">
-  <span class="etiqueta">- Nosotros</span>
+  <span class="etiqueta">- Who we are</span>
 
   <h1 class="titulo-principal">
     A Borderless<br />
@@ -11,9 +11,7 @@
     <strong>Where Technology<br />and Emotion Meet.</strong>
   </h1>
   <p class="descripcion">
-    Ayudamos a pequeñas y medianas empresas a destacar a través de
-    marcas atractivas, sitios web de alto rendimiento y automatización de
-    campañas.
+    We help SMBs stand out with bold branding, high-performance websites, and smart automation.
   </p>
   <a href="/about" class="btn modifier">About →</a>
   <div class="video-container" id="rootNode">
@@ -29,7 +27,6 @@
   </div>
 </section>
 <script type="module" src="/animacion/animate.js"></script>
-<script type="module" src="/animacion/grafo.js"></script>
 <script type="module">
   import anime from "https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.es.js";
 
@@ -70,15 +67,15 @@
     const scrollOffset = scrollY - offsetTop;
 
     if (scrollOffset > 0) {
-      video.style.transform = `translateY(${scrollOffset * -0.8}px)`;
+      video.style.transform = `translateY(${scrollOffset * -0.4}px)`;
     }
   });
 </script>
 
-<style>
+<style >
   .call-to-action {
     position: relative;
-    height: 100dvh;
+    height: 100vh;
     padding: 10% 5%;
     display: flex;
     flex-direction: column;
@@ -86,7 +83,7 @@
     align-items: flex-start;
     box-sizing: border-box;
     overflow: hidden;
-    color: #000;
+    color: var(--contrast);
   }
 
   .etiqueta {
@@ -101,20 +98,29 @@
   .titulo-principal {
     font-size: 2rem;
     line-height: 1.2;
-    font-weight: 300;
     margin: 0;
     width: 100%;
+    font-style: italic;
+    font-weight: normal;
+
   }
 
   .titulo-principal .light {
-    font-weight: 200;
-    color: #999;
+    font-style: normal;
+    color: var(--contrast);
   }
 
   .titulo-principal strong {
-    font-weight: 600;
-    color: var(--contrast);
-  }
+    font-style: normal;
+
+  font-weight: bold;
+  background: url("/gif/fondoazul.gif") no-repeat center center;
+  background-size: cover;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
 
   .descripcion {
     font-size: 0.95rem;
@@ -142,6 +148,8 @@
     align-items: center;
     z-index: 1;
   }
+  
+
   @media (min-width: 1280px) {
     .call-to-action {
     position: relative;
@@ -153,14 +161,13 @@
     align-items: flex-start;
     box-sizing: border-box;
     overflow: hidden;
-    color: #000;
+    color: var(--contrast);
   }
 
   .etiqueta {
     font-size: 2rem;
     font-weight: 300;
     letter-spacing: 0.05rem;
-    /* border-left: 2px solid #000; */
     padding-left: 0.5rem;
     margin-bottom: 1rem;
   }
@@ -168,20 +175,29 @@
   .titulo-principal {
     font-size: 4rem;
     line-height: 1.2;
-    font-weight: 200;
     margin: 0;
     width: 100%;
   }
 
   .titulo-principal .light {
-    font-weight: 200;
-    color: #999;
+    color: var(--contrast);
+    font-style: normal;
+
   }
 
   .titulo-principal strong {
-    font-weight: 400;
-    color: var(--contrast);
-  }
+    font-style: normal;
+
+  font-weight: bold;
+  font-size: 6rem;
+  background: url("/gif/fondoazul.gif") no-repeat center center;
+  background-size: cover;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
 
   .descripcion {
     font-size: 2rem;

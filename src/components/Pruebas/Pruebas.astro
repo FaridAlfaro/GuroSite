@@ -1,34 +1,39 @@
 ---
+// src/components/ServicesSection.astro
+import {  useEffect, useRef } from 'astro:hooks'; // Import useRef
+
 ---
 
-<section class="card-container">
-  <section class="card card-1">
-    <h1>Web Development</h1>
-    <img src="/web-dev-image.svg" alt="Web Development Illustration" />
-    <p>
-      We craft stunning and functional websites tailored to your business needs.
-      From e-commerce platforms to corporate sites, we've got you covered.
-    </p>
+<section class="services-wrapper">
+  <section class="card-container" id="card-container">
+    <section class="card card-1">
+      <h1>Web Development</h1>
+      <img src="/web-dev-image.svg" alt="Web Development Illustration" />
+      <p>
+        We craft stunning and functional websites tailored to your business needs.
+        From e-commerce platforms to corporate sites, we've got you covered.
+      </p>
+    </section>
+    <section class="card card-2">
+      <h1>Branding</h1>
+      <img src="/branding-image.svg" alt="Branding Illustration" />
+      <p>
+        Establish a powerful brand identity that resonates with your target
+        audience. We offer logo design, brand strategy, and marketing materials.
+      </p>
+    </section>
+    <section class="card card-3">
+      <h1>AI Automation</h1>
+      <img src="/ai-image.svg" alt="AI Automation Illustration" />
+      <p>
+        Leverage the power of artificial intelligence to automate your business
+        processes. We create custom AI solutions for efficiency and growth.
+      </p>
+    </section>
   </section>
-  <section class="card card-2">
-    <h1>Branding</h1>
-    <img src="/branding-image.svg" alt="Branding Illustration" />
-    <p>
-      Establish a powerful brand identity that resonates with your target
-      audience. We offer logo design, brand strategy, and marketing materials.
-    </p>
-  </section>
-  <section class="card card-3">
-    <h1>AI Automation</h1>
-    <img src="/ai-image.svg" alt="AI Automation Illustration" />
-    <p>
-      Leverage the power of artificial intelligence to automate your business
-      processes. We create custom AI solutions for efficiency and growth.
-    </p>
-  </section>
-</section>
 
-<div class="spacer"></div>
+  <div class="spacer"></div>
+</section>
 
 <style>
   :root {
@@ -36,15 +41,25 @@
     /* se recalcula con JS */
   }
 
+  .services-wrapper {
+    position: relative; /* Changed from fixed */
+    width: 100%;
+    /* height: var(--safe-height); */ /* Not needed here */
+    /* top: 0;
+    left: 0; */
+  }
+
   .spacer {
     height: 300vh;
+    width: 100%; /* Ensure full width */
   }
 
   .card-container {
-    position: fixed;
+    /* position: fixed; */ /* Removed fixed */
+    position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
     height: var(--safe-height);
     pointer-events: none;
     overflow: hidden;
@@ -162,16 +177,20 @@
     return scrollTop / scrollHeight;
   }
 
-  let animationStarted = false; // Track animation state
+  let animationStarted = false;
+  const container = document.getElementById('card-container'); // Get the container
 
   window.addEventListener('scroll', () => {
     const progress = getScrollProgress();
     const body = document.body;
 
-    if (progress >= 0 && !animationStarted) {
-      // Start animation and lock scroll
+    const containerTop = container.offsetTop;
+    const containerBottom = containerTop + container.offsetHeight;
+    const scrollPos = window.scrollY + (window.innerHeight / 2); // Center of viewport
+
+    if (scrollPos > containerTop && scrollPos < containerBottom && !animationStarted) {
       animationStarted = true;
-      body.classList.add('lock-scroll'); // Add lock class to body
+      body.classList.add('lock-scroll');
       animCard2.seek((progress) / 0.33 * animCard2.duration);
       animCard3.seek(0);
     } else if (progress >= 0.33 && progress < 0.66 && animationStarted) {
@@ -183,7 +202,7 @@
     }
 
     if (progress >= 0.99 && animationStarted) {
-      // Animation finished, unlock scroll
+      animationStarted = false;
       body.classList.remove('lock-scroll');
     }
   });

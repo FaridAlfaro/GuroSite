@@ -7,6 +7,8 @@ import Slider from "../components/Slider/Slider.astro";
 import Contact from "../components/contacto/Contact.astro";
 import Paquetes from "../components/Paquetes/Paquetes.astro";
 import Pyme from "../components/contacto/Pyme.astro";
+import WorkTitle from "../components/works/WorkTitle.astro";
+import Pruebas from "../components/Pruebas/Pruebas.astro";
 ---
 
 <Layout>
@@ -14,20 +16,11 @@ import Pyme from "../components/contacto/Pyme.astro";
  <section class="fade-section"><Call /></section>
 
   <section class="fade-section middle-section"><Slider /></section>
-  <section class="fade-section">
-    <h2 class="title">Algunos de <br><span>nuestros trabajos</span></h2>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae r
-      em perspiciatis nesciunt natus modi consequatur aliquam sit minima, tempore 
-      voluptas a quia illo quaerat ex incidunt distinctio iure? Eligendi, fuga!</p>  
-  </section>
+  <section class="fade-section"><WorkTitle/></section>
   <Works />
-  <section class="fade-section middle-section"><Paquetes /></section>
+  <!-- <section><Pruebas/></section> -->
   <section class="fade-section"><Contact/></section>
   <section class="fade-section middle-section"><Pyme/></section>
-  <!-- <div class="compu fade-section">
-    <h1>Actualmente nuestro sitio de escritrio esta en mantenimiento</h1>
-    <p>Visita nuestra versión móvil desde tu teléfono</p>
-  </div> -->
 </Layout>
 
 <style>
@@ -35,77 +28,5 @@ import Pyme from "../components/contacto/Pyme.astro";
     transition: background-color 0.6s ease;
   }
   
-  section {
-    /* margin-bottom: 100px; */
-  }
-  .titular {
-    margin-left: 5%;
-    width: 80%;
-    color: var(--contrast);
-    p {
-      color: #999;
-    }
-  }
-  .compu {
-    display: none;
-  }
-  
-	h2{
-      color: var(--contrast);
-      font-size: 2rem;
-      font-weight: 200;
-      color: #999;
-      margin-top: 300px;
-      padding: 0 5%;
-      
-    }
-    span{
-      font-weight: 500;
-        color: var(--contrast);
-      }
-    p{
-      color: #000;
-      font-weight: 400;
-      line-height: 1.5;
-      margin-bottom: 10%;
-      padding: 0 5%;
-
-    }
-    @media (min-width: 1280px) {
-      .titular {
-    margin-left: 5%;
-    width: 80%;
-    color: var(--contrast);
-    p {
-      color: #999;
-    }
-  }
-  .compu {
-    display: none;
-  }
-  
-	h2{
-      color: var(--contrast);
-      font-size: 4rem;
-      font-weight: 200;
-      color: #999;
-      margin-top: 300px;
-      padding: 0 5%;
-      
-    }
-    span{
-      font-weight: 500;
-        color: var(--contrast);
-      }
-    p{
-      color: #000;
-      font-size: 2rem;
-      width: 40%;
-      font-weight: 400;
-      line-height: 1.5;
-      margin-bottom: 10%;
-      padding: 0 5%;
-
-    }
-}
+	
 </style>
