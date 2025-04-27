@@ -4,6 +4,8 @@ text: Construcción de tu identidad como marca, logotipo, nombre, redes sociales
 price: Desde USD 150
 link: /diseno-desde-0
 contact: https://wa.me/5493512401402?text=Hola!%20Estoy%20interesado%20en%20recibir%20m%C3%A1s%20informaci%C3%B3n%20del%20paquete%20%22Dise%C3%B1o%20desde%200%22.%20
+image: \slider\pageB.webp  # <--- Agrega esta línea con la ruta correcta a tu imagen
+
 ---
 
 ### **Este servicio es para vos, si:**

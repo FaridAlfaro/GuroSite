@@ -7,26 +7,53 @@ import Slider from "../components/Slider/Slider.astro";
 import Contact from "../components/contacto/Contact.astro";
 import Paquetes from "../components/Paquetes/Paquetes.astro";
 import Pyme from "../components/contacto/Pyme.astro";
-import WorkTitle from "../components/works/WorkTitle.astro";
 import Pruebas from "../components/Pruebas/Pruebas.astro";
 ---
-
 <Layout>
   <Welcome />
- <section class="fade-section"><Call /></section>
-
-  <section class="fade-section middle-section"><Slider /></section>
-  <section class="fade-section"><WorkTitle/></section>
-  <Works />
+  <section ><Call /></section>
+  <section class="middle-section"><Slider /></section>
+  <section class="largo middle-section"><Works /></section>
   <!-- <section><Pruebas/></section> -->
-  <section class="fade-section"><Contact/></section>
-  <section class="fade-section middle-section"><Pyme/></section>
+  <section class=""><Contact/></section>
+  
+  <section class=" middle-section"><Pyme/></section>
+
+ 
 </Layout>
 
 <style>
   body {
     transition: background-color 0.6s ease;
   }
-  
-	
+  section {
+    animation: aparecer ease-in-out both;
+    animation-timeline: view();
+    animation-range: 0% 40%;
+    margin-top: 10vh;
+  }
+  .largo {
+    animation: aparecer-largo ease-in-out both;
+    animation-timeline: view();
+    animation-range: 0% 15%;
+  }
+  @keyframes aparecer {
+    from {
+      filter: blur(2px);
+
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes aparecer-largo {
+    0% {
+      filter: blur(2px);
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 </style>

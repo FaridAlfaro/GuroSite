@@ -21,30 +21,30 @@ import Footer from "../components/footer/Footer.astro";
 			<Footer />
 		</NavBar>
 	</body>
-	<script type="module">
+	<!-- <script type="module">
 		import anime from "https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.es.js";
 
 		document.addEventListener("DOMContentLoaded", () => {
 			const sections = document.querySelectorAll(".fade-section");
 			const middleSections = document.querySelectorAll(".middle-section");
 
-			const animateIn = (el) => {
-				anime({
-					targets: el,
-					opacity: 1,
-					easing: "easeOutQuad",
-					duration: 400,
-				});
-			};
+			// const animateIn = (el) => {
+			// 	anime({
+			// 		targets: el,
+			// 		opacity: 1,
+			// 		easing: "easeOutQuad",
+			// 		duration: 400,
+			// 	});
+			// };
 
-			const animateOut = (el) => {
-				anime({
-					targets: el,
-					opacity: 0,
-					easing: "easeOutQuad",
-					duration: 100,
-				});
-			};
+			// const animateOut = (el) => {
+			// 	anime({
+			// 		targets: el,
+			// 		opacity: 0,
+			// 		easing: "easeOutQuad",
+			// 		duration: 100,
+			// 	});
+			// };
 
 			const observer = new IntersectionObserver(
 				(entries) => {
@@ -80,8 +80,55 @@ import Footer from "../components/footer/Footer.astro";
 
 			sections.forEach((section) => observer.observe(section));
 		});
-	</script>
-</html>
+	</script> -->
+
+	<script type="module">
+        // No necesitas importar anime.js aquí si solo lo usas para el background
+        // import anime from 'https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.es.js';
+
+        const middleSections = document.querySelectorAll('.middle-section');
+        const body = document.body;
+        // Usamos un Set para rastrear las secciones que intersectan actualmente
+        const intersectingMiddleSections = new Set();
+
+        function handleIntersectionChanges(entries) {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // Si la sección está intersectando, añadirla al Set
+                    intersectingMiddleSections.add(entry.target);
+                } else {
+                    // Si la sección deja de intersectar, eliminarla del Set
+                    intersectingMiddleSections.delete(entry.target);
+                }
+            });
+
+            // Después de actualizar el Set, comprobar si alguna sección .middle-section está visible
+            if (intersectingMiddleSections.size > 0) {
+                // Si el Set no está vacío, añadir la clase (o mantenerla si ya estaba)
+                body.classList.add('body-black');
+            } else {
+                // Si el Set está vacío, eliminar la clase
+                body.classList.remove('body-black');
+            }
+        }
+
+        const observerOptions = {
+            root: null, // Observar en relación al viewport
+            rootMargin: '0px',
+            // Threshold muy bajo para detectar cualquier parte visible
+            // Puedes ajustar ligeramente si 0 da problemas, ej: 0.01
+            threshold: 0.1,
+        };
+
+        // Crear una única instancia del observer
+        const observer = new IntersectionObserver(handleIntersectionChanges, observerOptions);
+
+        // Observar cada sección .middle-section
+        middleSections.forEach((section) => {
+            observer.observe(section);
+        });
+    </script>
+  </html>
 
 <style is:global>
 	@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100..900&family=Montserrat:wght@100..900&family=Space+Mono&display=swap");
@@ -96,7 +143,7 @@ import Footer from "../components/footer/Footer.astro";
 
 		--azul4: #2218b2;    /* Hover oscuro / contraste */
 		--azul5: #1a1287;  /* Fondo profundo / modo oscuro */
-		--gris2: #3b3b55;    /* Texto oscuro o complementario */
+		--gris2: #888888;    /* Texto oscuro o complementario */
 		--gris1: #e0e0f0;   /* Divisores o bordes sutiles */
 	}
   
@@ -108,17 +155,23 @@ import Footer from "../components/footer/Footer.astro";
 	  font-family: "Montserrat", sans-serif;
 	  font-weight: 00;
 	  font-size: 14px;
-	  overflow-x: hidden;
+	  background-color: var(--background); /* Color inicial */
+     /* La transición debe estar en el body para que se aplique al cambiar la clase */
+     transition: background-color 0.3s ease, color 0.3s ease;
 	}
   
 	h1, h2, h3, h4, h5, h6 {
 	  font-family: "Montserrat", sans-serif;
+	  font-size: clamp(18px, 5vw, 60px);
 	}
   
-	p, a, span, li, button, input, textarea {
+	p, li, button, input, textarea{
 	  font-family: "Montserrat", sans-serif;
+	  font-size: clamp(12px, 3vw, 28px);
 	}
-  
+	a, label{
+		font-size: clamp(12px, 2vw, 28px);
+	}
 	.LogoText {
 	  font-family: "Space Mono", monospace;
 	}
@@ -133,13 +186,23 @@ import Footer from "../components/footer/Footer.astro";
 	  opacity: 0;
 	  transition: opacity .1s ease;
 	}
-  
+	.body-black {
+        background-color: var(--contrast); /* Usar la variable para el negro */
+        color: var(--background); /* Cambiar color de texto para contraste */
+    }
+	.fade-section {
+      opacity: 0; /* Opacidad inicial para la animación de entrada */
+      /* Puedes mantener la transición si quieres un fade sutil además de la animación CSS */
+      /* transition: opacity .1s ease; */
+    }
 	@keyframes fade-up {
-	  from {
-		filter: blur(20px);
+	  0% {
+		filter: blur(2px) brightness(0);
 		opacity: 0;
 	  }
-	  to {}
+	  50% {
+		filter: brightness(2);	
+	}
 	}
   
 	@keyframes slide-up {
@@ -159,7 +222,6 @@ import Footer from "../components/footer/Footer.astro";
 	}
   
 	.btn {
-	  font-size: 1rem;
 	  font-weight: 400;
 	  text-decoration: none;
 	  padding: 1rem;
@@ -170,7 +232,6 @@ import Footer from "../components/footer/Footer.astro";
 	}
   
 	.btn-mod {
-	  font-size: 1rem;
 	  font-weight: 400;
 	  text-decoration: none;
 	  padding: 1rem;

@@ -4,84 +4,72 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout title="About">
     <main>
-        <img src="/gif/poweranger.gif" alt="" />
-        <article class="fade-section">
+        <div class="separador"></div>
+        <article>
             <h2 style="color: var(--contrast)"> 
-                Innovación en gestión de talento: Metodología Freelance-Cop
+                Innovating Talent Management: The Freelance-Cop Methodology
             </h2>
             <p>
-                En nuestra empresa, transformamos la forma en que se desarrollan
-                los proyectos. Nuestro enfoque <strong>Freelance-Cop</strong> nos
-                permite crear equipos altamente especializados a demanda, seleccionando
-                a los mejores profesionales de nuestra red global de freelancers
-                asociados.
+                At our company, we're transforming project development. Our <strong>Freelance-Cop</strong> approach 
+                allows us to build highly specialized, on-demand teams by selecting top professionals 
+                from our global network of partner freelancers.
             </p>
             <p>
-                Con esta metodología, respondemos de manera ágil y precisa a las
-                necesidades de cada cliente, asegurando excelencia y
-                flexibilidad en cada entrega.
+                This methodology enables us to respond with agility and precision to each client's needs, 
+                ensuring excellence and flexibility in every deliverable.
             </p>
         </article>
-
-        <article class="fade-section">
-            <h2 style="color: var(--contrast)">¿Cómo funciona?</h2>
+  
+        <article>
+            <h2 style="color: var(--contrast)">How It Works</h2>
             <ol>
                 <li>
-                    <strong>Reunión Inicial:</strong> Analizamos las necesidades
-                    específicas de tu proyecto.
+                    <strong>Initial Consultation:</strong> We analyze your project's specific requirements.
                 </li>
                 <li>
-                    <strong>Selección de Talento:</strong> Elegimos expertos de nuestra
-                    cartera de freelancers según los requerimientos técnicos, creativos
-                    y estratégicos.
+                    <strong>Talent Selection:</strong> We handpick experts from our freelancer roster based 
+                    on the technical, creative, and strategic needs.
                 </li>
                 <li>
-                    <strong>Creación del Equipo:</strong> Formamos un equipo a medida,
-                    liderado por un gestor de proyectos dedicado.
+                    <strong>Team Assembly:</strong> We form a tailored team, led by a dedicated project manager.
                 </li>
                 <li>
-                    <strong>Ejecución:</strong> Trabajamos en colaboración contigo
-                    para garantizar resultados sobresalientes.
+                    <strong>Execution:</strong> We collaborate closely with you to guarantee outstanding results.
                 </li>
             </ol>
         </article>
-        <article class="fade-section">
-            <h2 style="color: var(--contrast)">Beneficios de Freelance-Cop</h2>
+  
+        <article >
+            <h2 style="color: var(--contrast)">Freelance-Cop Benefits</h2>
             <ul>
                 <li>
-                    <strong>Flexibilidad:</strong> Equipos que se adaptan a las necesidades
-                    cambiantes de cada cliente.
+                    <strong>Flexibility:</strong> Teams scale and adapt to each client's evolving needs.
                 </li>
                 <li>
-                    <strong>Especialización:</strong> Acceso a talentos de nicho
-                    seleccionados cuidadosamente.
+                    <strong>Specialization:</strong> Access carefully curated, niche talent.
                 </li>
                 <li>
-                    <strong>Rapidez:</strong> Montamos equipos de trabajo en tiempo
-                    récord.
+                    <strong>Speed:</strong> We assemble project teams rapidly.
                 </li>
                 <li>
-                    <strong>Optimización de Costos:</strong> Sin estructuras rígidas,
-                    los costos se ajustan al alcance del proyecto.
+                    <strong>Cost-Effective:</strong> Our lean structure means costs align directly with the project scope.
                 </li>
                 <li>
-                    <strong>Calidad Garantizada:</strong> Colaboramos con freelancers
-                    previamente evaluados y probados.
+                    <strong>Guaranteed Quality:</strong> We partner exclusively with pre-vetted, proven freelancers.
                 </li>
             </ul>
         </article>
-
-        <article class="fade-section">
-            <h2 style="color: var(--contrast)">¿Por qué elegirnos?</h2>
+  
+        <article>
+            <h2 style="color: var(--contrast)">Why Choose Us?</h2>
             <p>
-                Porque entendemos que cada cliente y cada proyecto es único.
-                Nuestra metodología Freelance-Cop no solo es innovadora, sino
-                que también asegura resultados efectivos, personalizados y de
-                alta calidad.
+                Because we understand that every client and every project is unique. 
+                Our Freelance-Cop methodology isn't just innovative—it delivers effective, 
+                personalized, high-quality results.
             </p>
             <p>
-                Trabajamos contigo, no solo para ti, construyendo relaciones
-                basadas en confianza y resultados medibles.
+                We work <strong>with you, not just for you</strong>, building relationships grounded 
+                in trust and measurable outcomes.
             </p>
         </article>
     </main>
@@ -98,6 +86,7 @@ import Layout from "../layouts/Layout.astro";
         align-items: center;
         padding-bottom: 100px;
         background-color: var(--background);
+        color: var(--contrast);
     }
     article {
         width: 90%;
@@ -119,7 +108,58 @@ import Layout from "../layouts/Layout.astro";
             margin: 1rem 0;
         }
     }
-    img {
+    .separador{
+        min-height: 60vh;
+        width: 100%;
         width: 100vw;
+        background: rgba(0, 0, 0, 0.781);
+        background-image: url("/gif/poweranger.gif");
+        background-size: contain;
+        background-size: 50vw 20vh;
+        background-blend-mode:darken;
+    }
+    @media (min-width: 1280px) {
+        main {
+        /* height: 100vh; */
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        padding-bottom: 100px;
+        background-color: var(--background);
+        color: var(--contrast);
+    }
+    article {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        p,
+        h2,
+        span {
+            text-align: left;
+            line-height: 1.5;
+            color: black;
+            /* margin: 0 5%; */
+        }
+        li {
+            line-height: 1.5;
+            color: black;
+            margin: 1rem 0;
+        }
+    }
+    .separador{
+        min-height: 60vh;
+        width: 100%;
+        background-size: 20vw 30vh;
+    }
+    img {
+        height: auto;
+        width: 100%;
+        display: none;
+    }
     }
 </style>

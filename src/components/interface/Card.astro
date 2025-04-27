@@ -1,86 +1,83 @@
 ---
-
 interface Props{
     title: string;
     text:string;
     price: string;
     link: string;
+    image: string; // <--- Agrega la propiedad 'image' a la interfaz
 }
-const {title, text, price, link} = Astro.props
+const {title, text, price, link, image} = Astro.props // <--- Desestructura también la propiedad 'image'
 ---
 
-<a  href=`/service${link}` class="container">
-    <div class="title-container">
-        <h3>{title}</h3>
-    </div>
+<a href={`/service${link}`} class="container">
     <div class="text-container">
+        <h3>{title}</h3>
+        <span>(About)</span>
         <p>{text}</p>
-        <strong class="btn">{price}</strong>
+        <strong class="btn-mod">{price}</strong>
     </div>
+    {image && <img src={image} alt={`Imagen para el servicio ${title}`} />}
+
 </a>
 
 
 
 
 <style>
-
+.container img {
+        width: 40vw;
+        height: 100vh; /* Mantiene la proporción */
+        object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+    }
     .container{
-        width: 90%;
-        min-height: calc(90vw/2);
-        height: calc(80vw/2);
+        width: 100%;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        border: solid 1px var(--contrast);
-        border-radius: 3px;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        color: var();
         animation: side ease-in-out both;
         animation-timeline: view();
         animation-range: 0% 50%;
-overflow: hidden;
+        margin: 10vh 0;
     }
-    .title-container{
-        height: 50%;
-        width: 100%;
-        background-color: var(--contrast);
-        color: var(--background);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        justify-items: center;
-        h3{
-            text-transform: uppercase;
-            font-size: 2rem;
-            width: 100%;
-            hyphens: auto;
-            overflow-wrap: break-word;
-            white-space: normal;
-            word-break: normal;
-            text-align: center;
+
+    @keyframes side {
+        from{
+            filter: opacity(0);
+        }
+        to{
+            filter: opacity(1);
         }
     }
+    
     .text-container{
         height: 100%;
-        width: 100%;
+        width: 30%;
+        margin: auto;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        p{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            align-content: center;
-            height: 100%;
-            width: 90%;
-            font-size: 1rem;
+        align-items: flex-start;
+        justify-content: flex-start;
+        color: var(--background);
+        h3{
+            font-weight: bold;
         }
-        a{
-            height: 100%;
-            width: 100%;
-            text-align: center;
+        p, span{  
+            color: var(--gris2);
         }
     }
-strong{
-    margin: 5%;
-}
+    @media (max-width: 768px) {
+        .container{
+            flex-direction: column;
+        }
+        .container img{
+            height: auto;
+            width: auto;
+        }
+        .text-container{
+            width: auto;
+            height: auto;
+            margin: 10% 5%;
+        }
+    }
 </style>

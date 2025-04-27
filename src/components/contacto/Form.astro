@@ -13,7 +13,7 @@
     <div style="display: flex; justify-content: space-between;">
         <div style="width: calc(50% - 4px);">
             <label for="nombre"
-                >Nombre: <input
+                >Name: <input
                     type="text"
                     id="nombre"
                     name="nombre"
@@ -23,7 +23,7 @@
         </div>
         <div style="width: calc(50% - 4px);">
             <label for="nombre_empresa"
-                >Empresa: <input
+                >Company: <input
                     type="text"
                     id="nombre_empresa"
                     name="empresa"
@@ -36,14 +36,14 @@
         >Email:<input type="email" id="email" name="email" required /></label
     >
     <label for="telefono"
-        >Número de Celular: <input
+        >Phone: <input
             type="text"
             id="telefono"
             name="telefono"
             required
         /></label
     >
-    <button type="submit">Enviar</button>
+    <button type="submit">Submit</button>
 </form>
 
 <style>
@@ -53,12 +53,12 @@
         border: none;
         margin: 5% 0;
         width: 100%;
-        color: var(--contrast);
+        color: var(--background);
     }
     #servicios:focus {
         text-align: left;
         transition: text-align ease 1s;
-        color: var(--contrast);
+        color: var(--background);
     }
 
     form {
@@ -67,7 +67,6 @@
         font-weight: normal;
         letter-spacing: 0.1cap;
         font-style: italic;
-        font-size: 16px;
     }
     input[type="text"],
     textarea,
@@ -76,7 +75,7 @@
         padding: 8px;
         margin-bottom: 10px;
         border: none;
-        border-bottom: 2px solid var(--contrast);
+        border-bottom: 2px solid var(--background);
         box-sizing: border-box;
         background-color: transparent; /* Fondo transparente */
         transition:
@@ -99,21 +98,21 @@
         letter-spacing: 2px;
         width: 100%;
         background-color: transparent;
-        color: var(--contrast);
+        color: var(--background);
         padding: 10px 20px;
-        border: solid 2px var(--contrast);
+        border: solid 2px var(--background);
         cursor: pointer;
         background: transparent;
         transition: background-color 0.3s;
     }
 
     button:hover {
-        color: var(--background);
-        background: var(--contrast);
+        color: var(--contrast);
+        background: var(--background);
     }
     input[type="submit"]:hover {
-        background-color: var(--contrast);
-        color: var(--background);
+        background-color: var(--background);
+        color: var(--contrast);
     }
     @media (max-width: 700px) {
         input[type="submit"] {

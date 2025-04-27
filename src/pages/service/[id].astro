@@ -2,54 +2,56 @@
 import Layout from "../../layouts/Layout.astro";
 import { getCollection, render } from "astro:content";
 
-
 export async function getStaticPaths() {
-    const services = await getCollection("services");
+  const services = await getCollection("services");
 
-    return services.map((service) => ({
-        params: { id: service.data.link }, // `link` debe corresponder al nombre que aparece en la URL
-        props: { service },
-    }));
+  return services.map((service) => ({
+    params: { id: service.data.link },
+    props: { service },
+  }));
 }
 
-const {service} = Astro.props;
-const {data} = service;
+const { service } = Astro.props;
+const { data } = service;
 const { title, text, price, link, contact } = data;
-const {Content} = await render(service);
+const { Content } = await render(service);
 ---
 
 <Layout title={title}>
-
-  <section>
+  <section class="service-detail">
     <div class="title-container">
       <h1 class="title">{title}</h1>
-      <a href="404"  class="hero-call">Ver video resúmen</a>
+      <a href="404" class="hero-call">Ver video resúmen</a>
     </div>
-    <div class="content">
-      <Content />
+
+    <div class="content-wrapper">  <div class="content">
+        <Content />
+      </div>
     </div>
-    <div class="contact">
-      <p class="price">Agenda una asesoría y adquirí este servicio:<br> 
-        {price}</p>
-      <a href={contact} class="btn"> Cotizar &rarr;</a>
+
+    <div class="contact-wrapper">  <div class="contact">
+        <p class="price">
+          Agenda una asesoría y adquirí este servicio:<br />
+          {price}
+        </p>
+        <a href={contact} class="btn contact-button"> Cotizar &rarr;</a>
+      </div>
     </div>
   </section>
-  
 </Layout>
 
 <style>
-  section {
+  .service-detail {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: flex-start; /* Changed from center */
     align-items: center;
     background: var(--background);
     color: var(--contrast);
-    p, li, span{
-      color: black;
-    }
   }
 
+  /* title-container styles remain the same */
   .title-container {
     height: 90vh;
     background-color: var(--contrast);
@@ -61,70 +63,107 @@ const {Content} = await render(service);
     gap: 2rem;
     width: 100vw;
   }
-  .title{
-    font-size: 1.618rem;
+
+  .content-wrapper {  /* Styling the content section */
+    width: 100%;
+    padding: 4rem 0;
+    background: linear-gradient(to bottom, var(--background), #f9f9f9); /* Subtle gradient */
+    border-radius: 20px 20px 0 0; /* Rounded corners at the top */
+    margin-top: -3rem; /* Overlap with title-container */
+    z-index: 10; /* Ensure it's above the title-container */
+    position: relative; /* For z-index */
   }
+
   .content {
-    width: 100vh;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: column; /* Changed to column for better layout */
+    justify-content: flex-start;
     align-items: flex-start;
-    width: 90%;
-    line-height: 20px;
-    p{
-      margin: 2rem 0;
-    }
-    strong{
-      margin: 0;
-    }
-    li{
-      font-size: 1rem;
-      line-height: 25px;
-      margin-left: 2rem;
-      width: 80%;
-      animation: sideLeft linear both 1s;
-        animation-timeline: view();
-        animation-range: 0% 50%;
-    }
-    h1{
-      border-bottom: 2px solid var(--contrast);
-      width: auto;
-      margin-top: 2rem;
-    }
-    h2, h3 {
-    margin-top: 1.618rem;
-    margin-bottom: 1rem;
-    font-weight: 500;
-    line-height: 1.5;
-    text-align: left;
-    border-bottom: 2px solid var(--background);
-    width: auto;
+    width: 80%;
+    max-width: 900px; /* Added max-width */
+    margin: 0 auto; /* Center the content */
+    line-height: 1.6; /* Increased line height */
   }
+
+  .content li {
+    line-height: 1.8; /* Increased line height for list items */
+    width: 100%; /* List items take full width */
+    padding-left: 1.5rem; /* Indentation for list items */
+    position: relative;
+    animation: sideLeft linear both 1s;
+    animation-timeline: view();
+    animation-range: 0% 50%;
+  }
+
+  .content li::before { /* Custom bullet points */
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--azul3); /* Accent color */
+  }
+
+  .content h1 {
+    border-bottom: 2px solid var(--azul3); /* Accent color */
+    width: auto;
+    margin-top: 2.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .content h2,
+  .content h3 {
+    margin-top: 2rem;
+    margin-bottom: 1.2rem;
+    font-weight: 600;
+    line-height: 1.4;
+    text-align: left;
+    border-bottom: 2px solid var(--gris1); /* Lighter color */
+    width: auto;
+    padding-bottom: 0.3rem;
+  }
+
+  .contact-wrapper {  /* Styling the contact section */
+    width: 100%;
+    padding: 3rem 0;
+    background: #f9f9f9; /* Match content background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .contact {
-    height: 30vh;
-    width: 80vw;
+    max-width: 600px;
+    width: 80%;
     display: flex;
     flex-direction: column;
-    margin: 2rem 0;
     gap: 2rem;
     align-items: center;
-    justify-content: space-evenly;
-    font-size: 1.618rem;
-    background: var(--background);
-    border-radius: 25px;
-  }
-  .price{
-    color: var(--contrast);
-    font-size: 1.618rem;
-    width: 90%;
+    justify-content: center;
+    text-align: center;
   }
 
-  /* Estilo para listas generadas por Markdown */
+  .price {
+    color: var(--gris2); /* Darker text */
+    line-height: 1.7;
+  }
 
+  .contact-button {  /* Styling the button */
+    background: var(--azul3);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    font-weight: 500;
+  }
 
-
-
+  /* Existing animations */
+  @keyframes sideLeft {
+    from {
+      transform: translateX(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
 </style>

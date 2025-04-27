@@ -3,39 +3,40 @@ import Layout from "../layouts/Layout.astro";
 import Form from "../components/contacto/Form.astro";
 ---
 
-<Layout title="Contacto">
-  <section class="contacto">
-    <div class="titular">
+<Layout title="Contact Us"> {/* Changed title */}
+  <section class="contacto"> {/* 'contacto' class name is fine, it's internal */}
+    <div class="titular"> {/* 'titular' class name is fine */}
       <h1>
-        <span class="s1">¿Listo</span>
-        <br />para<span class="s2"> trabajar</span><br /><span class="s3"
-          >juntos?</span>
+        <span class="s1">Ready</span>
+        <br />to<span class="s2"> work</span><br /><span class="s3"
+          >together?</span
+        >
       </h1>
-      <div class="correo">
+      <div class="correo"> 
         <a
-          href="mailto:adjustabledevelopment@gmail.com?Subject=Interesado%20en%20el%20servicio"
-          >adjustabledevelopment@gmail.com</a>
+          href="mailto:info@guro.com?Subject=Interested%20in%20your%20services" 
+          >info@guro.com</a
+        >
       </div>
       <div class="correo">
         <a
-          href="https://wa.me/3512401402/?text=Hola!%20Quiero%20trabajar%20con%20ustedes"
+          href="https://wa.me/3512401402/?text=Hey!%20Interested%20in%20working%20together" 
         >
-          +54 9 351 240-1402
+          +54 9 351 240-1402 
         </a>
       </div>
     </div>
     <div class="formulario">
-      <div class="accion">
-        <span></span>
-        <div class="textos">
-          <h2>Estamos listos para hacer tu proyecto realidad.<br />¿Y vos?</h2>
+      <div class="accion"> 
+        <span></span> 
+        <div class="textos"> 
+          <h2>We're ready to bring your project to life.<br />Are you?</h2> 
           <p class="a">
-            ¡No dudes en contactarnos para discutir tus ideas! Estamos
-            emocionados de colaborar contigo y llevar tu proyecto al siguiente
-            nivel.
+            Feel free to reach out to discuss your ideas! We're excited to partner
+            with you and take your project to the next level. 
           </p>
         </div>
-        <img src="/gif/computadora.gif" alt="" />
+        <img src="/gif/computadora.gif" alt="" /> 
       </div>
       <Form />
     </div>
@@ -43,18 +44,18 @@ import Form from "../components/contacto/Form.astro";
 </Layout>
 
 <style>
+ 
   .titular {
-    margin-top: 50px;
     h1 {
-      color: var(--constrast);
+      color: var(--background);
       font-weight: 300;
-      font-size: 3rem;
+      font-size: clamp(14px, 7.77vh, 80px);
     }
   }
   .s1,
   .s3 {
     font-weight: 300;
-    color: var(--constrast);
+    color: var(--background);
   }
   .s2 {
     color: transparent;
@@ -72,8 +73,8 @@ import Form from "../components/contacto/Form.astro";
     transition: ease 1s;
     a {
       text-decoration: none;
-      color: var(--white);
-      font-size: 0.5em;
+      color: var(--background);
+      font-size: clamp(12px, 5.55vh, 18px);
     }
     a:hover {
       transition: ease 1s;
@@ -93,8 +94,8 @@ import Form from "../components/contacto/Form.astro";
     padding: 0 5%;
     height: 100vh;
     align-items: center;
-    background-color: var(--background);
-    color: var(--constrast);
+    background-color: var(--contrast);
+    color: var(--background);
     opacity: 1;
     overflow: hidden;
   }
@@ -106,10 +107,9 @@ import Form from "../components/contacto/Form.astro";
     height: 100%;
     width: 80%;
     margin: 0;
-    padding: 10% 0;
   }
   p {
-    font-size: clamp(12px, 0.5vh, 14px);
+    font-size: clamp(12px, 5.55vh, 18px);
     margin: 0;
     padding: 0;
   }
@@ -123,7 +123,7 @@ import Form from "../components/contacto/Form.astro";
     height: 100%;
     width: auto;
     h2 {
-      font-size: clamp(14px, 3vh, 18px);
+      font-size: clamp(14px, 5.55vh, 24px);
       font-weight: normal;
       margin: 0 0 3% 0;
       padding: 0;
@@ -142,7 +142,7 @@ import Form from "../components/contacto/Form.astro";
       padding: 0;
       min-width: 2px;
       height: 100%;
-      background: var(--white);
+      background: var(--background);
       margin: 0 5% 0 0;
     }
     img {
@@ -156,7 +156,6 @@ import Form from "../components/contacto/Form.astro";
       justify-content: center;
       width: auto;
       height: auto;
-      margin-top: 50px;
     }
     .titular {
       margin-top: 20%;

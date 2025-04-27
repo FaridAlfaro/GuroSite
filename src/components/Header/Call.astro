@@ -5,11 +5,11 @@
 <section class="call-to-action">
   <span class="etiqueta">- Who we are</span>
 
-  <h1 class="titulo-principal">
+  <h4 class="titulo-principal">
     A Borderless<br />
     <span class="light">Creative Company</span><br />
     <strong>Where Technology<br />and Emotion Meet.</strong>
-  </h1>
+  </h4>
   <p class="descripcion">
     We help SMBs stand out with bold branding, high-performance websites, and smart automation.
   </p>
@@ -26,68 +26,24 @@
     </video>
   </div>
 </section>
-<script type="module" src="/animacion/animate.js"></script>
-<script type="module">
-  import anime from "https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.es.js";
 
-  const section = document.querySelector(".call-to-action");
-  const videoContainer = document.querySelector("#rootNode");
-  const video = videoContainer.querySelector("video");
-
-  let animationTriggered = false;
-
-  video.style.opacity = 0;
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && !animationTriggered) {
-          setTimeout(() => {
-            anime({
-              targets: video,
-              opacity: 1,
-              easing: "easeOutCubic",
-              duration: 1000,
-            });
-            animationTriggered = true;
-          }, 1000);
-        }
-      });
-    },
-    { threshold: 0.2 },
-  );
-
-  observer.observe(section);
-
-  window.addEventListener("scroll", () => {
-    if (!animationTriggered) return;
-
-    const scrollY = window.scrollY;
-    const offsetTop = section.offsetTop;
-    const scrollOffset = scrollY - offsetTop;
-
-    if (scrollOffset > 0) {
-      video.style.transform = `translateY(${scrollOffset * -0.4}px)`;
-    }
-  });
-</script>
 
 <style >
   .call-to-action {
     position: relative;
     height: 100vh;
-    padding: 10% 5%;
+    padding: 0% 5%;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
     align-items: flex-start;
-    box-sizing: border-box;
-    overflow: hidden;
+    /* box-sizing: border-box; */
+    /* overflow: hidden; */
     color: var(--contrast);
   }
 
   .etiqueta {
-    font-size: 0.9rem;
+    font-size: clamp(0.9rem, 2vh, 24px);
     font-weight: 300;
     letter-spacing: 0.05rem;
     /* border-left: 2px solid #000; */
@@ -96,7 +52,6 @@
   }
 
   .titulo-principal {
-    font-size: 2rem;
     line-height: 1.2;
     margin: 0;
     width: 100%;
@@ -123,24 +78,29 @@
 }
 
   .descripcion {
-    font-size: 0.95rem;
     font-weight: 400;
     max-width: 70%;
     line-height: 1.6;
   }
 
   .video-container {
-    width: 100vw;
-    height: calc(100vw / 1.618);
+    width: 100%;
+    height: 90vw;
     z-index: 2;
-    transform: translateX(-5%);
+    /* transform: translateX(-5%); */
+    overflow: hidden;
+    animation: fade-up ease-in-out both;
+    animation-timeline: view();
+    animation-range: 0% 35%;
+    
   }
 
   .video-container video {
-    width: 100vw;
-    height: 100vw;
+    height: 100%;
+    width: 100%;
     object-fit: cover;
     border-radius: 3px;
+   
   }
   .modifier {
     display: flex;
@@ -148,7 +108,6 @@
     align-items: center;
     z-index: 1;
   }
-  
 
   @media (min-width: 1280px) {
     .call-to-action {
@@ -160,12 +119,11 @@
     gap: 2rem;
     align-items: flex-start;
     box-sizing: border-box;
-    overflow: hidden;
+    /* overflow: hidden; */
     color: var(--contrast);
   }
 
   .etiqueta {
-    font-size: 2rem;
     font-weight: 300;
     letter-spacing: 0.05rem;
     padding-left: 0.5rem;
@@ -173,7 +131,6 @@
   }
 
   .titulo-principal {
-    font-size: 4rem;
     line-height: 1.2;
     margin: 0;
     width: 100%;
@@ -189,7 +146,6 @@
     font-style: normal;
 
   font-weight: bold;
-  font-size: 6rem;
   background: url("/gif/fondoazul.gif") no-repeat center center;
   background-size: cover;
   -webkit-background-clip: text;
@@ -200,7 +156,6 @@
 
 
   .descripcion {
-    font-size: 2rem;
     font-weight: 300;
     max-width: 50%;
     line-height: 1.6;

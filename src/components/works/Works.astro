@@ -1,262 +1,228 @@
----
----
-
 <section class="works-section" aria-labelledby="works-title">
-    
-      
-    <ul class="works-list">
-      <li class="work-entry">
-        <article>
-          <div class="work-index">
-            <div class="work-text">
-            <span class="work-service"><strong>01</strong>Brand design</span>
-              <h3 class="work-title">Libre</h3>
-            </div>
-            <img src="https://th.bing.com/th/id/OIP.veOfD2wxZ9M7bRpUsbbIsAAAAA?rs=1&pid=ImgDetMain" alt="Diseño de marca para Libre" class="work-image" />
+<h2 class="title">A Few Things <br><span>We've Done</span></h2>
 
-          </div>
-        </article>
-      </li>
-  
-      <li class="work-entry">
-        <article>
-          <div class="work-index">
-            <div class="work-text">
-            
-            <span class="work-service"><strong>02</strong>Web development</span>
-              <h3 class="work-title">Budget</h3>
-            </div>
-            <img src="https://th.bing.com/th/id/OIP.veOfD2wxZ9M7bRpUsbbIsAAAAA?rs=1&pid=ImgDetMain" alt="Desarrollo web para Budget" class="work-image" />
+  <ul class="works-list">
+    <li class="work-entry">
+      <article class="work-index">
+        <div class="work-text">
+          <h3 class="work-title">Libre</h3>
+          <ul class="work-services">
+            <li class="work-service">Brand design - Web development</li>
+          </ul>
+        </div>
+        <img
+          src="https://th.bing.com/th/id/OIP.veOfD2wxZ9M7bRpUsbbIsAAAAA?rs=1&pid=ImgDetMain"
+          alt="Diseño de marca para Libre"
+          class="work-image"
+        />
+      </article>
+    </li>
 
-          </div>
-        </article>
-      </li>
-  
-      <li class="work-entry">
-        <article>
-          <div class="work-index">
-            
-            <div class="work-text">
-              <span class="work-service"><strong>03</strong>Digital Marketing</span>
-              <h3 class="work-title">Nova</h3>
-            </div>
-            <img src="https://th.bing.com/th/id/OIP.veOfD2wxZ9M7bRpUsbbIsAAAAA?rs=1&pid=ImgDetMain" alt="Marketing digital para Nova" class="work-image" />
+    <li class="work-entry">
+      <article class="work-index">
+        <div class="work-text">
+          <h3 class="work-title">Budget</h3>
+          <ul class="work-services">
+            <li class="work-service">E commerce - Rebranding</li>
+          </ul>
+        </div>
+        <img
+          src="https://th.bing.com/th/id/OIP.veOfD2wxZ9M7bRpUsbbIsAAAAA?rs=1&pid=ImgDetMain"
+          alt="Desarrollo web para Budget"
+          class="work-image"
+        />
+      </article>
+    </li>
 
-          </div>
-        </article>
-      </li>
-  
-      <li class="work-entry">
-        <article>
-          <div class="work-index">
-            <div class="work-text">
-              <span class="work-service"><strong>04</strong>UX/UI</span>
-              <h3 class="work-title">Forma</h3>
-            </div>
-            <img src="https://th.bing.com/th/id/OIP.veOfD2wxZ9M7bRpUsbbIsAAAAA?rs=1&pid=ImgDetMain" alt="Estrategia UX/UI para Forma" class="work-image" />
+    <li class="work-entry">
+      <article class="work-index">
+        <div class="work-text">
+          <h3 class="work-title">Nova</h3>
+          <ul class="work-services">
+            <li class="work-service">Digital Marketing - Automation - AI agent</li>
+          </ul>
+        </div>
+        <img
+          src="https://th.bing.com/th/id/OIP.veOfD2wxZ9M7bRpUsbbIsAAAAA?rs=1&pid=ImgDetMain"
+          alt="Marketing digital para Nova"
+          class="work-image"
+        />
+      </article>
+    </li>
 
-          </div>
-        </article>
-      </li>
-    </ul>
-    <a href="/works" class="btn modifier">Works</a>
-  </section>
+    <li class="work-entry">
+      <article class="work-index">
+        <div class="work-text">
+          <h3 class="work-title">Forma</h3>
+          <ul class="work-services">
+            <li class="work-service">UX/UI</li>
+          </ul>
+        </div>
+        <img
+          src="https://th.bing.com/th/id/OIP.veOfD2wxZ9M7bRpUsbbIsAAAAA?rs=1&pid=ImgDetMain"
+          alt="Estrategia UX/UI para Forma"
+          class="work-image"
+        />
+      </article>
+    </li>
+  </ul>
 
-  <script type="module">
-  
-    const images = document.querySelectorAll('.work-image');
-  
-    function animateClipPath(img, progress) {
-      const maxCut = 100;
-      const easedProgress = Math.min(Math.max(progress, 0), 1);
-      const cut = easedProgress * maxCut;
-      img.style.clipPath = `inset(0% 0% ${cut}% 0%)`;
-    }
-  
-    window.addEventListener('scroll', () => {
-      const viewportHeight = window.innerHeight;
-  
-      images.forEach(img => {
-        const rect = img.getBoundingClientRect();
-        const imgBottom = rect.bottom;
-        const imgHeight = rect.height;
-  
-        // solo se aplica si la imagen ya pasó el centro de la pantalla hacia arriba
-        if (imgBottom < viewportHeight / 2) {
-          const distanceFromBottom = viewportHeight - imgBottom;
-          const progress = distanceFromBottom / viewportHeight;
-          animateClipPath(img, progress);
-        } else {
-          // restablece clip cuando la imagen está centrada o descendiendo
-          img.style.clipPath = `inset(0% 0% 0% 0%)`;
-        }
-      });
-    });
-  </script>
+  <a href="/works" class="btn-mod" style="width: 50%; text-align: center;">+ Proyects</a>
+</section>
 
-  <style>
-    .works-section {
-      padding: 0% 5%;
-      color: var(--contrast);
-    }
-    .works-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-  
-    .work-entry {
+<style>
+  h2{
+      font-weight: 200;
+      color: var(--gris1);
+      text-align: left;
       width: 100%;
-      margin: 0 auto 3rem;
-      border-bottom: 1px dashed rgba(0, 4, 247, 0.295);
-      padding-bottom: 2rem;
     }
+    span{
+      font-weight: 500;
+        color: var(--background);
+      }
+  .works-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0% 5%;
+  }
+
+  .works-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10vh;
+    padding: 0;
+    margin: 0 0 5vh 0;
+    
+  }
+
+  .work-entry {
+    width: 100%;
+    
+    
+  }
+
+  .work-index {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: var(--background);
+
+  }
+
+  .work-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 4vw;
+    
+  }
+
+  .work-title {
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 3.3vw;
+    
+  }
+
+  .work-services {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+  }
+
+  .work-service {
+    color: var(--gris1);
+    
+
+  }
+
+  .work-image {
+    width: 90vw;
+    height: calc(90vw * 1.618);
+    object-fit: cover;
+    animation: side ease-in-out both;
+  animation-timeline: view();
+  animation-range: 0% 60%;
+    
+  }
   
-    .work-index {
-      font-size: 0.9rem;
-      font-weight: 400;
-      margin-bottom: 0.3rem;
+
+  .modifier {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .sr-only {
+    color: var(--background);
+  }
+
+  @media (min-width: 1280px) {
+    .works-section{
       display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      color: var(--contrast);
+    justify-content: center;
+    align-items: stretch;
+    flex-direction: column;
+    padding: 0% 5%;
     }
-  
+    .works-list{
+      gap: 20vh;
+    }
+    h2{
+      font-weight: 200;
+      margin-top: 300px;
+      padding: 0 5%;
+      margin-bottom: 10vh;
+    }
+    span{
+      margin-left: 5rem;
+      font-weight: 500;
+        color: var(--background);
+      }
+    p{
+      color: var(--bakground);
+      width: 40%;
+      font-weight: 400;
+      line-height: 1.5;
+
+      padding: 0 5%;
+
+    }
     .work-text {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
-      gap: 0.5rem;
-      color: var(--contrast);
-    }
-  
-    .work-title {
-      font-size: 3rem;
-      font-weight: 600;
-      margin: 0;
-      padding: 0;
-      text-transform: uppercase;
-      letter-spacing: -1px;
-      color: #000;
-    }
-    strong{
-    font-size: .9rem;
-    font-weight: 200;
-    margin-right: 1rem;
   }
-    .work-service {
-      font-size: 0.9rem;
-      color: var(--contrast);
-
+    .work-title{
+     margin: 0;
     }
-  
-    .work-image {
-      width: 90vw;
-      height: 90vw;
-      margin-top: calc(1.618rem * 2);
-      border-radius: 3px
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-      object-fit: cover;
-      transition: clip-path 0.5s ease-out;
-      clip-path: inset(0% 0% 0% 0%);
-    }
-  
-    .sr-only {
-      color: var(--contrast);
-    }
-    
-    .modifier{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    @media (min-width: 1280px) {
-      .works-section {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      padding: 0% 5%;
-      color: var(--contrast);
-    }
-    .works-list {
-      display: flex;
-      flex-direction: column;
-      list-style: none;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      padding: 0;
-      margin: 0;
-    }
-  
-    .work-entry {
-      width: 100%;
-      border-bottom: 2px dashed rgba(36, 0, 240, 0.199);
-      padding-bottom: 2rem;
-    }
-  
     .work-index {
-      font-size: 2rem;
-      font-weight: 400;
-      margin-bottom: 2rem;
-      display: flex;
-      justify-content: space-around;
       flex-direction: row;
-      width: 100%;
-      gap: 0.5rem;
-      color: var(--contrast);
+      justify-content: space-between;
     }
-  
-    .work-text {
-      display: flex;
-      height: 5%;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.5rem;
-      color: var(--contrast);
-    }
-  
-    .work-title {
-      font-size: 6rem;
-      font-weight: 600;
-      margin: 0;
-      padding: 0;
-      text-transform: uppercase;
-      letter-spacing: -1px;
-      color: #000;
-    }
-  
-    .work-service {
-      font-size: 2rem;
-      color: var(--contrast);
 
-    }
-  strong{
-    font-size: 1.9rem;
-    font-weight: 200;
-    margin-right: 1rem;
-  }
     .work-image {
       width: 40vw;
       height: calc(40vw / 1.618);
-      border-radius: 3px;
-      margin: 0;
     }
-  
-    .sr-only {
-      color: var(--contrast);
-    }
-    
-    .modifier{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 20%;
-    }
-}
-  </style>
-  
+  a{
+    width: 20% !important;
+  }
+  }
 
-  
+  @keyframes side {
+        from{
+            filter: brightness(.2);
+        }
+        to{
+            filter: brightness(1);
+        }
+    }
+</style>

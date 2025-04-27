@@ -4,6 +4,8 @@ text: Menús interactivos y marketing especializado.
 price: Desde USD 120
 link: /Gastronomicos
 contact: https://wa.me/5493512401402?text=Hola!%20Estoy%20interesado%20en%20recibir%20m%C3%A1s%20informaci%C3%B3n%20del%20paquete%20Gastronomicos%20.%20
+image: \slider\pageB.webp  # <--- Agrega esta línea con la ruta correcta a tu imagen
+
 ---
 
 ### **Este servicio es para vos, si:**

@@ -9,17 +9,14 @@ const services = await getCollection("services")
 ---
 
 <Layout title="Services">
-
-    <div class="services-title">
-        <h1 class="title">Paquetes</h1>
-        <h2 class="off"><span>hasta</span>40% OFF</h2>
-        <h2 class="offdes">Al adquirir nuestros servicios de esta forma obtenés descuentos especiales</h2>
-    </div>
     <main class="container">
+        <div class="services-title">
+            <h1 class="title">SERVICES</h1>
+        </div>
         {
           services.map(service => {
               const { slug, data } = service
-              const {title, text, price, link} = data
+              const {title, text, price, link, contact, image} = data
               return(
                   <Card key={data.title} {...data} />
               )
@@ -37,23 +34,25 @@ const services = await getCollection("services")
  
 
 <style>
+    main{
+        background: var(--contrast);
+        width: 100%;
+    }
     .services-title{
-        height: calc(120vw/2 + 50px);
-        width: 100vw;
+        height: 60vh;
+        width: 100%;
         display: flex;
-        justify-content: center;
-        align-items: left;
-        background-image: url("/fondos/893.webp");
-        background-size: cover;
-        background-position: 50%;
-        background-color: #0601205b;
-        background-blend-mode:color-burn;
-        flex-direction: column;
-        justify-items: center;
+        align-items: center;
+        background-color: var(--contrast);
+        justify-content: flex-start;
+        align-content: center;
+        flex-direction: row;
+        padding: 0 2%;
         h1{
-            margin: 0 10%;
-
+            font-size: clamp(24px, 7vh, 60px);
             color: var(--background);
+            font-weight: 500;
+            margin-left: 2%;
         }
         }
         .off{
@@ -63,7 +62,6 @@ const services = await getCollection("services")
             display: flex;
             align-items: center;
             justify-content: left;
-            font-size: 2rem;
             position: relative;
             background: red;
             span{
@@ -83,13 +81,11 @@ const services = await getCollection("services")
         margin: 0 10%;
           }
   .container{
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 2rem;
-    padding: 100px 0;
     
   }
   .button{
