@@ -40,19 +40,18 @@ const services = await getCollection("services")
     }
     .services-title{
         height: 60vh;
-        width: 100%;
+        width: fit-content;
         display: flex;
+        text-align: left;
         align-items: center;
         background-color: var(--contrast);
         justify-content: flex-start;
         align-content: center;
         flex-direction: row;
-        padding: 0 2%;
         h1{
             font-size: clamp(24px, 7vh, 60px);
             color: var(--background);
             font-weight: 500;
-            margin-left: 2%;
         }
         }
         .off{
@@ -86,7 +85,6 @@ const services = await getCollection("services")
     justify-content: center;
     align-items: center;
     gap: 2rem;
-    
   }
   .button{
         color: var(--contrast);

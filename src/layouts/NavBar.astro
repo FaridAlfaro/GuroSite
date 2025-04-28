@@ -198,7 +198,7 @@
     align-items: center;
     transition:
       background-color 0.3s ease,
-      top 0.6s easeInOutCubic; /* Add transition for 'top' property */
+      top 0.5s easeInOutCubic; /* Add transition for 'top' property */
     pointer-events: none;
     /* Add border for separator when active */
     border-bottom: 0px solid var(--background); /* Default border */
@@ -309,7 +309,7 @@
       anime({
         targets: menuPanel,
         top: "0",
-        duration: 600,
+        duration: 300,
         easing: "easeInOutCubic",
         begin: () => {
           menuPanel.classList.add("active");
@@ -327,7 +327,7 @@
       anime({
         targets: menuPanel,
         top: "-40vh", // Assuming the panel height is 40vh based on your CSS
-        duration: 600,
+        duration: 300,
         easing: "easeInOutCubic",
         complete: () => {
           menuPanel.classList.remove("active");

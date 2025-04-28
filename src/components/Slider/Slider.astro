@@ -5,17 +5,21 @@
 <section class="slider section">
   <div class="credits">
     <h2>Our <span>services</span></h2>
+    <div class="textos">
+      <p class="wrap">We combine expert web development, intelligent automations, and distinctive branding to empower your business success.</p>
+      <a href="/services" class="btn-mod">+ Info</a>
+    </div>
   </div>
 
   <div class="nav">
     <div class="next"></div>
     <div class="prev"></div>
-    <a href="/works" class="explore-btn">+ Services</a>
   </div>
 
   <div class="item is-active">
     <div class="content">
-      <div class="wrap">Web dev</div>
+      <h3 class="wrap">Web Development</h3>
+      <p></p>
     </div>
     <div class="imgs">
       <div class="grid">
@@ -37,7 +41,7 @@
 
   <div class="item">
     <div class="content">
-      <div class="wrap">Brand design</div>
+      <h3 class="wrap">Brand design</h3>
     </div>
     <div class="imgs">
       <div class="grid">
@@ -59,7 +63,7 @@
 
   <div class="item">
     <div class="content">
-      <div class="wrap">AI Automation</div>
+      <h3 class="wrap">AI Automation</h3>
     </div>
     <div class="imgs">
       <div class="grid">
@@ -86,22 +90,25 @@
   .slider {
     height: 90vh;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     color: var(--background);
     position: relative;
     overflow: hidden;
     transition: background-color 2s;
   }
-
+.btn-mod{
+  z-index: 99;
+}
   .slider .credits {
-    position: absolute;
-    top: 64px;
-    left: 5%;
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    width: 90%;
+    margin-left: 5%;
+    justify-content: space-between;
+    align-content: flex-end;
+    align-items: flex-start;
     line-height: 1.65;
     z-index: 10;
-    max-width: 320px;
     h2 {
       font-weight: 200;
       span{
@@ -116,7 +123,9 @@
     height: 50%;
     /* padding-top: 60%; */
   }
-
+h3{
+  text-transform: uppercase;
+}
   .slider .item .imgs .grid {
     position: absolute;
     top: 0;
@@ -126,9 +135,9 @@
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(12, 1fr);
-    grid-column-gap: 32px;
-    grid-row-gap: 32px;
-    transform: rotate(-20deg);
+    grid-column-gap: 12px;
+    grid-row-gap: 12px;
+    /* transform: rotate(-20deg); */
     opacity: 0.65;
   }
 
@@ -140,7 +149,7 @@
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+justify-content: center;
   }
 
   .slider .item .img {
@@ -246,34 +255,39 @@
     transform: translateX(-0.5rem);
   }
 
-  .slider .nav .explore-btn {
-    z-index: 4;
-    position: absolute;
-    bottom: 2rem;
-    left: calc(50% - 4rem);
-    width: 8em;
-    text-align: center;
-    padding: 1rem 0;
-    border: solid 2px var(--background);
-    background: transparent;
-    color: var(--background);
-    transition: background-color 0.3s;
-    cursor: pointer;
-  }
 
-  .slider .nav .explore-btn:hover {
-    color: var(--contrast);
-    background: var(--background);
-  }
+
 
   .slider .item:not(.is-active) {
     opacity: 0;
     pointer-events: none;
   }
+  .textos{
+    p{
+      display: none;
+    }
+  }
   @media (min-width: 1280px) {
+    .textos{
+      display: flex;
+      flex-direction: column;
+      width: 40%;
+      height: 40%;
+      justify-content: space-between;
+    p{
+      color: var(--gris2);
+      line-height: 1.5;
+      font-size: 1.618rem;
+      display:block;
+    }
+    a{
+      width: fit-content;
+    }
+  }
     .slider {
-    height: 100vh;
+    height: 90vh;
     width: 100%;
+    margin: 10% 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -284,18 +298,7 @@
   }
 
   .slider .credits {
-    position: absolute;
-    top: 64px;
-    left: 5%;
-    line-height: 1;
-    z-index: 10;
-    max-width: 320px;
-    h2 {
-      font-weight: 200;
-      span{
-        font-weight: 500;
-      }
-    }
+    
   }
 
   .slider .item .imgs {
@@ -308,7 +311,7 @@
   .slider .item .imgs .grid {
     position: absolute;
     top: 0;
-    left: 0;
+    left: -15%;
     width: 100%;
     height: 100%;
     display: grid;
@@ -316,19 +319,18 @@
     grid-template-rows: repeat(12, 1fr);
     grid-column-gap: 32px;
     grid-row-gap: 32px;
-    transform: rotate(-20deg);
+    /* transform: rotate(-20deg); */
     opacity: 0.65;
   }
 
   .slider .item {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 0%;
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
   }
 
   .slider .item .img {
@@ -387,15 +389,14 @@
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    margin-left: 7%;
     line-height: 1.15;
     font-weight: 700;
   }
 
   .slider .item .content .wrap {
-    text-align: center;
-    width: 100%;
-    max-width: 600px;
+    text-align: left;
     line-height: 1;
     letter-spacing: 2px;
     font-weight: 400;

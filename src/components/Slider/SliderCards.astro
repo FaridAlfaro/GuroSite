@@ -1,0 +1,211 @@
+--- 
+---
+
+<section>
+  <article class="service">
+    <div class="text">
+      <div class="title">
+        <h2 id="slide-title" class="slide-text">Title example</h2>
+        <span id="slide-span" class="slide-text">span example</span>
+      </div>
+      <div class="texts">
+        <p id="slide-text" class="slide-text">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </p>
+        <a href="#" id="slide-btn" class="btn-mod slide-text">btn example</a>
+      </div>
+    </div>
+
+    <div class="service-img">
+      <img src="/slider/pageA.jpg" alt="Slide 1" class="slide-img active" />
+      <img src="/slider/pageB.webp" alt="Slide 2" class="slide-img" />
+      <img src="/slider/pageA.jpg" alt="Slide 3" class="slide-img" />
+    </div>
+  </article>
+
+  <div class="controls-container">
+    <button class="prev">izq</button>
+    <button class="next">der</button>
+  </div>
+</section>
+
+<style>
+section {
+  height: 100dvh;
+  width: 100%;
+  background: var(--contrast, #111);
+  color: var(--background, #eee);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Controles */
+.controls-container {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  right: 5%;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 10;
+}
+.prev, .next {
+  cursor: pointer;
+  background: rgba(238,238,238,0.7);
+  color: #111;
+  border: none;
+  padding: 0.8rem;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: background 0.3s, transform 0.2s;
+  pointer-events: all;
+}
+.prev:hover, .next:hover {
+  background: rgba(238,238,238,1);
+}
+.prev:active, .next:active {
+  transform: scale(0.9);
+}
+
+/* Estructura del contenido */
+.service {
+  height: 80dvh;
+  width: 70dvw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.text {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  height: 90%;
+  justify-content: space-between;
+}
+.title h2 {
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+.title span {
+  margin-bottom: 1em;
+  opacity: 0.7;
+}
+.texts p {
+  line-height: 1.6;
+}
+.texts {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+a {
+  width: 40%;
+}
+
+/* Imágenes */
+.service-img {
+  height: 80vh;
+  width: calc(80vh / 1.618);
+  position: relative;
+  perspective: 1200px;
+}
+.service-img img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translateX(0);
+  opacity: 0.3;
+  z-index: 1;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  backface-visibility: hidden;
+}
+.service-img img.active {
+  opacity: 1;
+  z-index: 3;
+  transform: translateX(0) scale(1.02);
+}
+</style>
+
+<script type="module">
+import anime from "https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.es.js";
+
+const slidesData = [
+  { title: "Diseño Web Moderno", span: "Creamos Experiencias", text: "Desarrollamos sitios web atractivos...", btnText: "Ver Proyectos", btnLink: "/proyectos/web" },
+  { title: "Aplicaciones Móviles", span: "Conecta con tu Audiencia", text: "Creamos aplicaciones nativas...", btnText: "Descubre Más", btnLink: "/servicios/apps" },
+  { title: "Optimización SEO", span: "Visibilidad Garantizada", text: "Mejoramos tu ranking...", btnText: "Consulta SEO", btnLink: "/servicios/seo" }
+];
+
+const images = document.querySelectorAll('.slide-img');
+const texts = document.querySelectorAll('.slide-text');
+const nextBtn = document.querySelector('.next');
+const prevBtn = document.querySelector('.prev');
+let index = 0;
+
+function updateContent(idx) {
+  const data = slidesData[idx];
+  document.getElementById('slide-title').textContent = data.title;
+  document.getElementById('slide-span').textContent = data.span;
+  document.getElementById('slide-text').textContent = data.text;
+  const btn = document.getElementById('slide-btn');
+  btn.textContent = data.btnText;
+  btn.href = data.btnLink;
+}
+
+function animate(direction) {
+  if (anime.running.length) return;
+
+  const isNext = direction === 'next';
+  index = (index + (isNext ? 1 : slidesData.length - 1)) % slidesData.length;
+
+  // Remover clase active de todos
+  images.forEach(img => img.classList.remove('active'));
+
+  // Animar movimiento
+  anime({
+    targets: images,
+    translateX: (el, i) => `${(i - index) * 20}%`,
+    duration: 800,
+    easing: 'easeInOutQuad',
+    complete: () => {
+      // Agregar active al nuevo
+      images[index].classList.add('active');
+    }
+  });
+
+  // Animar textos
+  anime({
+    targets: texts,
+    opacity: [1, 0],
+    duration: 300,
+    easing: 'easeInOutQuad',
+    complete: () => {
+      updateContent(index);
+      anime({
+        targets: texts,
+        opacity: [0, 1],
+        duration: 300,
+        easing: 'easeInOutQuad'
+      });
+    }
+  });
+}
+
+nextBtn.addEventListener('click', () => animate('next'));
+prevBtn.addEventListener('click', () => animate('prev'));
+
+document.addEventListener('DOMContentLoaded', () => {
+  images.forEach((img, i) => {
+    img.style.transform = `translateX(${i * 20}%)`;
+    if (i === 0) img.classList.add('active');
+  });
+  updateContent(0);
+});
+</script>

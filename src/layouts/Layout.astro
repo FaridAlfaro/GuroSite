@@ -158,24 +158,39 @@ import Footer from "../components/footer/Footer.astro";
 	  background-color: var(--background); /* Color inicial */
      /* La transición debe estar en el body para que se aplique al cambiar la clase */
      transition: background-color 0.3s ease, color 0.3s ease;
+	 scrollbar-width: none;  /* Oculta la barra de scroll de Firefox */
+
 	}
-  
+	body::-webkit-scrollbar {
+    display: none;  /* Oculta la barra de scroll principal */
+  }
 	h1, h2, h3, h4, h5, h6 {
 	  font-family: "Montserrat", sans-serif;
-	  font-size: clamp(18px, 5vw, 60px);
+	  font-size: clamp(18px, 3.236vh, 60px);
 	}
   
 	p, li, button, input, textarea{
 	  font-family: "Montserrat", sans-serif;
-	  font-size: clamp(12px, 3vw, 28px);
+	  font-size: clamp(12px, 2vh, 28px);
 	}
 	a, label{
-		font-size: clamp(12px, 2vw, 28px);
+		font-size: clamp(12px, .9vh, 28px);
 	}
 	.LogoText {
 	  font-family: "Space Mono", monospace;
 	}
+    @media (min-width: 720px) {
+		h1, h2, h3, h4, h5, h6 {
+		font-size: clamp(18px, 3.236vw, 60px);
+	}
   
+	p, li, button, input, textarea{
+	  font-size: clamp(12px, 2vw, 28px);
+	}
+	a, label{
+		font-size: clamp(12px, .9vw, 28px);
+	}
+	}
 	a, a:visited {
 	  color: inherit;
 	  text-decoration: none;
@@ -226,7 +241,7 @@ import Footer from "../components/footer/Footer.astro";
 	  text-decoration: none;
 	  padding: 1rem;
 	  color: var(--contrast);
-	  border: 2px solid var(--contrast);
+	  border-bottom: 2px solid var(--contrast);
 	  background: transparent;
 	  transition: all 0.3s ease;
 	}
@@ -236,7 +251,7 @@ import Footer from "../components/footer/Footer.astro";
 	  text-decoration: none;
 	  padding: 1rem;
 	  color: var(--background);
-	  border: 2px solid var(--background);
+	  border-bottom: 2px solid var(--background);
 	  background: transparent;
 	  transition: all 0.3s ease;
 	}
@@ -254,5 +269,6 @@ import Footer from "../components/footer/Footer.astro";
  overflow: hidden !important;
  height: 100vh;
 }
+
   </style>
   
