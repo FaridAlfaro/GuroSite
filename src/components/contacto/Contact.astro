@@ -2,106 +2,219 @@
 // Contacto.astro - Componente
 ---
 <section class="contacto">
-  <h2>Let’s Talk</h2>
+  <div class="cards-container">
+    <a href="/contact" class="btn-card main-card">
+      <div class="card-content">
+        <h3>Have more questions?</h3>
+        <p>Book a time for a short call to discuss the possibilities of working together.</p>
+        <span class="call-to-action">➜ Book a call</span>
+      </div>
+    </a>
 
-  <div class="botones">
-    <a href="https://wa.me/3512401402/?text=Hola!%20Quiero%20trabajar%20con%20ustedes" target="_blank" class="btn whatsapp">
-      Hit us up on WhatsApp
-    </a>
-    <a href="mailto:info@guro.com" class="btn mail">
-      Shoot us an email
-    </a>
-    <a href="/contact" class="btn form">
-      I want to be contacted
-    </a>
+    <div class="small-cards-wrapper">
+      <a href="https://wa.me/3512401402/?text=Hola!%20Quiero%20trabajar%20con%20ustedes" target="_blank" class="btn-card small-card whatsapp-card">
+        <span class="card-title">WhatsApp</span>
+        <span class="call-to-action"> ➜ Chat now</span>
+      </a>
+      <a href="mailto:info@guro.com" class="btn-card small-card mail-card">
+        <span class="card-title">Email</span>
+        <span class="call-to-action">➜ Send mail</span>
+      </a>
+    </div>
   </div>
 </section>
 
 <style>
+  :root {
+    --card-bg-dark: #4f3b33; /* Color oscuro de la tarjeta principal (marrón) */
+    --card-text-light: #eee; /* Color claro del texto en las tarjetas */
+    --whatsapp-color: #25d366;
+    --mail-color: #0072c6;
+  }
+
+  /* Estilos generales de la sección de contacto */
   .contacto {
-    height: 100vh;
+    height: 100dvh;
     width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     overflow: hidden;
+    color: var(--card-text-light); /* Color de texto por defecto para el componente */
+    padding: 2rem 0; /* Un poco de padding vertical */
   }
 
-  .contacto h2 {
-    text-align: left;
-    font-weight: bold;
-    margin-bottom: 10%;
-    margin-left: 5%;
-    color: var(--contrast);
-    width: 100%;
-  }
-
-  .botones {
+  .cards-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-content: space-around;
-    gap: 1rem;
+    flex-direction: column; /* Por defecto, apiladas en móvil */
+    gap: 1.5rem; /* Espacio entre las tarjetas */
     width: 100%;
+    align-items: center; /* Centra las tarjetas horizontalmente en móvil */
   }
 
-  .btn {
-    width: 35vw;
-    height: 35vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 500;
-    text-align: center;
-    border: none;
+  /* Estilos base para todas las tarjetas (btn-card) */
+  .btn-card {
     text-decoration: none;
+    border-radius: 12px; /* Bordes más redondeados para un aspecto suave */
+    padding: 1.5rem; /* Padding interno */
     transition: all 0.3s ease;
+    color: var(--card-text-light); /* Texto claro por defecto */
   }
 
-  .whatsapp {
-    background: #25d366;
-    color: var(--background);
+  .btn-card:hover {
+    transform: translateY(-8px); /* Efecto de elevación al hacer hover */
   }
 
-  .whatsapp:hover {
-    background: #1ebe5d;
+  /* Estilos de la tarjeta principal (formulario) */
+  .main-card {
+    background-color: var(--contrast); /* Color oscuro de la tarjeta principal */
+    width: 80%; /* Ocupa todo el ancho disponible en móvil */
+    border-radius: 12px; /* Bordes más redondeados para un aspecto suave */
   }
 
-  .mail {
-    background: #0072c6;
-    color: var(--background);
+  .main-card h3 {
+    font-size: 1.618rem;
+    font-weight: 400; /* Peso de fuente similar al de la imagen */
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
   }
 
-  .mail:hover {
-    background: #005b9f;
+  .main-card p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem; /* Espacio antes del CTA */
+    flex-grow: 1; /* Permite que el párrafo ocupe el espacio disponible */
   }
 
-  .form {
-    background: transparent;
-    border: 2px solid var(--contrast);
-    color: var(--contrast);
+  .main-card .call-to-action {
+    font-size: 2rem;
+    margin-left: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    color: var(--card-text-light);
   }
 
-  .form:hover {
-    background: var(--contrast);
-    color: var(--background);
+  /* Contenedor de las tarjetas pequeñas */
+  .small-cards-wrapper {
+    display: flex;
+    flex-direction: column; /* Apiladas en móvil */
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 550px; /* El mismo max-width que la tarjeta principal */
+    align-items: center; /* Centra las tarjetas pequeñas */
   }
 
+  /* Estilos de las tarjetas pequeñas (WhatsApp y Mail) */
+  .small-card {
+    width: 80%; /* Ocupa todo el ancho disponible en móvil */
+    background-color: var(--card-bg-dark); /* Color de fondo similar a la principal */
+  }
+
+  .small-card .card-title {
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--card-text-light);
+  }
+
+  .small-card .call-to-action {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-left: 1rem;
+    color: var(--card-text-light);
+    display: flex;
+    align-items: center;
+  }
+
+  /* Colores específicos para WhatsApp y Mail */
+  .whatsapp-card {
+    background-color: var(--whatsapp-color); /* Color de fondo de WhatsApp */
+  }
+  .whatsapp-card:hover {
+    background-color: #1ebe5d; /* Tono más oscuro al hover */
+  }
+
+  .mail-card {
+    background-color: var(--mail-color); /* Color de fondo de Mail */
+  }
+  .mail-card:hover {
+    background-color: #005b9f; /* Tono más oscuro al hover */
+  }
+
+
+  /* Media Query para Tablet y Desktop */
+  @media (min-width: 769px) {
+    .cards-container {
+      flex-direction: row; /* En desktop, las tarjetas están en fila */
+      justify-content: center; /* Centra el grupo de tarjetas */
+      align-items: flex-start; /* Alinea las tarjetas por la parte superior */
+      gap: 2.5rem; /* Aumenta el espacio entre grupos de tarjetas */
+    }
+
+    .main-card {
+      width: 50%; /* La tarjeta principal ocupa el 50% del contenedor */
+      max-width: 550px; /* Limita el ancho máximo */
+      min-height: 300px; /* Aumenta la altura mínima para desktop */
+      height: auto; /* Permite que la altura se ajuste al contenido */
+      padding: 2rem;
+    }
+
+    .main-card h3 {
+      font-size: 2.2rem; /* Título más grande para desktop */
+    }
+    .main-card p {
+        font-size: 1.2rem;
+    }
+    .main-card .call-to-action {
+        font-size: 1.5rem;
+    }
+
+    .small-cards-wrapper {
+      flex-direction: column; /* Las tarjetas pequeñas siguen apiladas */
+      gap: 1.5rem;
+      width: auto; /* Su ancho se ajusta a su contenido/max-width */
+      max-width: 260px; /* Limita el ancho del wrapper */
+    }
+
+    .small-card {
+      width: 260px; /* Ancho fijo para las tarjetas pequeñas en desktop */
+      height: 180px; /* Altura fija para las tarjetas pequeñas en desktop */
+      padding: 1.5rem;
+      justify-content: space-between; /* Distribuye el contenido */
+    }
+
+    .small-card .card-title {
+        font-size: 1.5rem;
+    }
+    .small-card .call-to-action {
+        font-size: 1.2rem;
+    }
+  }
+
+  /* Media Query para pantallas muy grandes (opcional) */
   @media (min-width: 1280px) {
-    .contacto {
-    flex-direction: row;
-  }
-
-    .contacto h2 {
-      margin-bottom: 5%;
+    .cards-container {
+        gap: 3rem;
     }
-    .botones{
-      flex-direction: row;
-      flex-wrap: wrap;
+    .main-card {
+        padding: 2.5rem;
+        min-height: 350px;
     }
-    .btn {
-      height: 250px;
+    .main-card h3 {
+        font-size: 2.5rem;
+    }
+    .main-card p {
+        font-size: 1.3rem;
+    }
+    .main-card .call-to-action {
+        font-size: 1.6rem;
+    }
+    .small-card {
+        width: 280px;
+        height: 200px;
     }
   }
 </style>

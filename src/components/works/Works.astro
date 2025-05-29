@@ -1,17 +1,17 @@
 <section class="works-section" aria-labelledby="works-title">
-<h2 class="title">A Few Things <br><span>We've Done</span></h2>
+  <h2 class="title">A Few Things <br /><span>We've Done</span></h2>
 
   <ul class="works-list">
     <li class="work-entry">
       <article class="work-index">
         <div class="work-text">
-          <h3 class="work-title">Libre</h3>
+          <h3 class="work-title">SDG_STUDIO</h3>
           <ul class="work-services">
             <li class="work-service">Brand design - Web development</li>
           </ul>
         </div>
         <img
-          src="https://th.bing.com/th/id/OIP.veOfD2wxZ9M7bRpUsbbIsAAAAA?rs=1&pid=ImgDetMain"
+          src="/gif/arqui.gif"
           alt="Diseño de marca para Libre"
           class="work-image"
         />
@@ -27,7 +27,7 @@
           </ul>
         </div>
         <img
-          src="https://th.bing.com/th/id/OIP.veOfD2wxZ9M7bRpUsbbIsAAAAA?rs=1&pid=ImgDetMain"
+          src="/gif/budget.gif"
           alt="Desarrollo web para Budget"
           class="work-image"
         />
@@ -39,7 +39,9 @@
         <div class="work-text">
           <h3 class="work-title">Nova</h3>
           <ul class="work-services">
-            <li class="work-service">Digital Marketing - Automation - AI agent</li>
+            <li class="work-service">
+              Digital Marketing - Automation - AI agent
+            </li>
           </ul>
         </div>
         <img
@@ -67,20 +69,22 @@
     </li>
   </ul>
 
-  <a href="/works" class="btn-mod" style="width: 50%; text-align: center;">+ Proyects</a>
+  <a href="/works" class="btn-mod" style="width: 50%; text-align: center;"
+    >+ Proyects</a
+  >
 </section>
 
 <style>
-  h2{
-      font-weight: 200;
-      color: var(--gris1);
-      text-align: left;
-      width: 100%;
-    }
-    span{
-      font-weight: 500;
-        color: var(--background);
-      }
+  h2 {
+    font-weight: 200;
+    color: var(--gris1);
+    text-align: left;
+    width: 100%;
+  }
+  span {
+    font-weight: 500;
+    color: var(--background);
+  }
   .works-section {
     display: flex;
     justify-content: center;
@@ -96,13 +100,10 @@
     gap: 10vh;
     padding: 0;
     margin: 0 0 5vh 0;
-    
   }
 
   .work-entry {
     width: 100%;
-    
-    
   }
 
   .work-index {
@@ -110,7 +111,6 @@
     flex-direction: column;
     align-items: flex-start;
     color: var(--background);
-
   }
 
   .work-text {
@@ -119,39 +119,32 @@
     justify-content: center;
     align-items: flex-start;
     margin-bottom: 4vw;
-    
   }
 
   .work-title {
     font-weight: 600;
     text-transform: uppercase;
     margin-bottom: 3.3vw;
-    
   }
 
   .work-services {
     list-style: none;
     padding: 0;
     margin: 0;
-    
   }
 
   .work-service {
     color: var(--gris1);
-    
-
   }
 
   .work-image {
     width: 90vw;
     height: calc(90vw * 1.618);
-    object-fit: cover;
+    object-fit: contain;
     animation: side ease-in-out both;
-  animation-timeline: view();
-  animation-range: 0% 60%;
-    
+    animation-timeline: view();
+    animation-range: 0% 60%;
   }
-  
 
   .modifier {
     display: flex;
@@ -164,42 +157,40 @@
   }
 
   @media (min-width: 1280px) {
-    .works-section{
+    .works-section {
       display: flex;
-    justify-content: center;
-    align-items: stretch;
-    flex-direction: column;
-    padding: 0% 5%;
+      justify-content: center;
+      align-items: stretch;
+      flex-direction: column;
+      padding: 0% 5%;
     }
-    .works-list{
+    .works-list {
       gap: 20vh;
     }
-    h2{
+    h2 {
       font-weight: 200;
       margin-top: 300px;
       margin-bottom: 10vh;
     }
-    span{
+    span {
       margin-left: 5rem;
       font-weight: 500;
-        color: var(--background);
-      }
-    p{
+      color: var(--background);
+    }
+    p {
       color: var(--bakground);
       width: 40%;
       font-weight: 400;
       line-height: 1.5;
-
-
     }
     .work-text {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
-  }
-    .work-title{
-     margin: 0;
+    }
+    .work-title {
+      margin: 0;
     }
     .work-index {
       flex-direction: row;
@@ -207,20 +198,20 @@
     }
 
     .work-image {
-      width: 40vw;
-      height: calc(40vw / 1.618);
+      height: 90vh;
+      width: calc(90vh * 1.618);
     }
-  a{
-    width: 20% !important;
-  }
+    a {
+      width: 20% !important;
+    }
   }
 
   @keyframes side {
-        from{
-            filter: brightness(.2);
-        }
-        to{
-            filter: brightness(1);
-        }
+    from {
+      filter: brightness(0.2);
     }
+    to {
+      filter: brightness(1);
+    }
+  }
 </style>
