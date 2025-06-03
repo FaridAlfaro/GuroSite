@@ -1,8 +1,8 @@
 ---
 title: E-commerce
 text: Tiendas online adaptadas a tus productos y clientes.
-price: Desde USD 200
-link: /E_commerce
+price: Desde USD 490
+link: https://app.netlify.com/projects/budgetstore/
 contact: https://wa.me/5493512401402?text=Hola!%20Estoy%20interesado%20en%20recibir%20m%C3%A1s%20informaci%C3%B3n%20del%20paquete%20E-commerce%20.%20
 image: \slider\pageB.webp  # <--- Agrega esta línea con la ruta correcta a tu imagen
 
