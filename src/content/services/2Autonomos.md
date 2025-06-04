@@ -1,4 +1,5 @@
 ---
+id: 2
 title: Autónomos
 text: Webs adaptadas a tus necesidades para atraer clientes y automatizar tareas.
 price: Desde USD 200

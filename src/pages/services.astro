@@ -16,7 +16,7 @@ const services = await getCollection("services")
         {
           services.map(service => {
               const { slug, data } = service
-              const {title, text, price, link, contact, image} = data
+              const {id, title, text, price, link, contact, image} = data
               return(
                   <Card key={data.title} {...data} />
               )

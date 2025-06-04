@@ -6,7 +6,7 @@ export async function getStaticPaths() {
   const services = await getCollection("services");
 
   return services.map((service) => ({
-    params: { id: service.slug }, 
+    params: { id: service.data.title }, // Usar el título como parámetro
     props: { service },
   }));
 }

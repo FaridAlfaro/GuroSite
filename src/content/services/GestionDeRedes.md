@@ -1,4 +1,5 @@
 ---
+id: 7
 title: Gestion de redes 
 text: Gestión y diseño de contenido profesional para tus redes sociales.
 price: Desde USD 50

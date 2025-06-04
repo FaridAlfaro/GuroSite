@@ -1,4 +1,5 @@
 ---
+id: 1
 title: Diseño desde 0
 text: Construcción de tu identidad como marca, logotipo, nombre, redes sociales, etc (branding).
 price: Desde USD 300

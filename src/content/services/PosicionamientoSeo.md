@@ -1,4 +1,5 @@
 ---
+id: 8
 title: SEO
 text: Mejora tu visibilidad en Google con técnicas avanzadas de SEO.
 price: Desde USD 95
