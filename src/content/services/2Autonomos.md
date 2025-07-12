@@ -5,7 +5,8 @@ text: Webs adaptadas a tus necesidades para atraer clientes y automatizar tareas
 price: Desde USD 200
 link: https://guro.es/
 contact: https://wa.me/5493512401402?text=Hola!%20Estoy%20interesado%20en%20recibir%20m%C3%A1s%20informaci%C3%B3n%20del%20paquete%20Autonomos%20.%20
-image: \slider\pageB.webp  # <--- Agrega esta línea con la ruta correcta a tu imagen
+image: \slider\pageB.webp
+category: Emprendedores
 ---
 ### **Este servicio es para vos, si:**
 

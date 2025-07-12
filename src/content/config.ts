@@ -8,7 +8,8 @@ const services = defineCollection ({
         price: z.string(),
         link: z.string().url(),
         contact: z.string().url(),
-        image: z.string()
+        image: z.string(),
+        category: z.string(),
 
     })
 })
